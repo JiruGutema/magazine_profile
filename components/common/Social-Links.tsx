@@ -19,72 +19,57 @@ export default function SocialLinks() {
           href="https://www.github.com/jirugutema"
           target="_blank"
           rel="noopener noreferrer"
+          title="GitHub"
         >
-          <Github
-            className="cursor-pointer text-blue-500 hover:scale-125 hover:text-black"
-            size={20}
-          />
+          <Github className="cursor-pointer  hover:scale-125 " size={20} />
         </a>{" "}
         <a
           href="https://www.leetcode.com/jiru_gutema"
           target="_blank"
           rel="noopener noreferrer"
+          title="LeetCode"
         >
-          <Code2Icon
-            className="cursor-pointer  text-blue-500 hover:scale-125 hover:text-black "
-            size={20}
-            
-          />
+          <Code2Icon className="cursor-pointer   hover:scale-125  " size={20} />
         </a>
         <a
           href="https://www.t.me/jethior"
           target="_blank"
           rel="noopener noreferrer"
+          title="Telegram"
         >
-          <Send
-            className="cursor-pointer text-blue-500 hover:scale-125 hover:text-cyan-500"
-            size={20}
-          />
+          <Send className="cursor-pointer  hover:scale-125 " size={20} />
         </a>
         <a
           href="https://www.linkedin.com/in/jiru-gutema"
           target="_blank"
           rel="noopener noreferrer"
+          title="LinkedIn"
         >
-          <Linkedin
-            className="cursor-pointer text-blue-500 hover:scale-125 hover:text-blue-500"
-            size={20}
-          />
+          <Linkedin className="cursor-pointer  hover:scale-125 " size={20} />
         </a>
         <a
           href="https://www.instagram.com/jirugutema"
           target="_blank"
           rel="noopener noreferrer"
+          title="Instagram"
         >
-          <Instagram
-            className="cursor-pointer text-blue-500 hover:scale-125 hover:text-pink-600"
-            size={20}
-          />
+          <Instagram className="cursor-pointer  hover:scale-125 " size={20} />
         </a>
         <a
           href="https://www.x.com/jirugutema"
           target="_blank"
           rel="noopener noreferrer"
+          title="X (twitter) "
         >
-          <Twitter
-            className="cursor-pointer text-blue-500 hover:scale-125 hover:text-blue-500"
-            size={20}
-          />
+          <Twitter className="cursor-pointer  hover:scale-125 " size={20} />
         </a>
         <a
           href="mailto:jirudagutema@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
+          title="Email"
         >
-          <Mail
-            className="cursor-pointer text-blue-500 hover:scale-125 hover:text-green-500"
-            size={20}
-          />
+          <Mail className="cursor-pointer  hover:scale-125 " size={20} />
         </a>
       </div>
     </div>

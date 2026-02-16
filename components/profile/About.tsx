@@ -56,6 +56,7 @@ export default function About() {
         You can find my favourite playlist I listen to while coding <a className="text-blue-600 underline" href="https://open.spotify.com/playlist/1YIe34rcmLjCYpY9wJoM2p?si=3585a7cff5f743f6">here</a>
       </p>
       <br />
+      <span className="text-sm text-muted-foreground">
 
       <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
         <Button
@@ -65,6 +66,9 @@ export default function About() {
           <span className="ml-2">View Resume</span>
         </Button>
       </Link>
+
+        <i className="ml-2 fas fa-file-pdf text-zinc-500">last updated: oct, 2025</i>
+      </span>
     </section>
   );
 }
