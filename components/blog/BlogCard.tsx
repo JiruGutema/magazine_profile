@@ -13,7 +13,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   const slug = generateSlug(post.title);
 
   return (
-    <article className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
+    <article className="bg-card border border-border rounded-lg p-6 flex flex-row justify-between hover:shadow-lg transition-shadow duration-200">
       <div className="space-y-4">
         {/* Header */}
         <div className="space-y-2">
@@ -37,6 +37,8 @@ export default function BlogCard({ post }: BlogCardProps) {
             </span>
           ))}
         </div>
+
+        {/*cover image */}
 
         {/* Meta information */}
         <div className="flex items-center justify-between text-sm text-muted-foreground">
@@ -79,6 +81,14 @@ export default function BlogCard({ post }: BlogCardProps) {
             Read more →
           </Link>
         </div>
+      </div>
+
+      <div className=" h-48 overflow-hidden rounded-md">
+        <img
+          src={post.coverImage}
+          alt={post.title}
+          className="w-200 h-full object-cover"
+        />
       </div>
     </article>
   );
