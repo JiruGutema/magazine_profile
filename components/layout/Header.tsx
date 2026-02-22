@@ -70,18 +70,25 @@ export function Header() {
         </a>
         {/* Desktop nav */}
         <nav className="hidden md:flex space-x-6 justify-center items-center">
-<Link
-  href="/"
-  className={`text-lg  hover:underline ${pathname === '/' ? 'underline font-medium' : ""}`}
->
-  Home
-</Link>
-<Link
-  href="/projects"
-  className={`text-lg  hover:underline ${pathname === '/projects' ? 'underline font-medium' : ''}`}
->
-  Projects
-</Link>
+          <Link
+            href="/"
+            className={`text-lg  hover:underline ${pathname === "/" ? "underline font-medium" : ""}`}
+          >
+            Home
+          </Link>
+
+          <Link
+            href="/blogs"
+            className={`text-lg  hover:underline ${pathname === "/blogs" ? "underline font-medium" : ""}`}
+          >
+            Blogs
+          </Link>
+          <Link
+            href="/projects"
+            className={`text-lg  hover:underline ${pathname === "/projects" ? "underline font-medium" : ""}`}
+          >
+            Projects
+          </Link>
           <button
             onClick={toggleTheme}
             className="ml-4 w-10 h-10 flex mt-1 text-xl items-center "
@@ -121,6 +128,15 @@ export function Header() {
           >
             Home
           </Link>
+
+          <Link
+            href="/blogs"
+            className="block py-2 pr-6 text-lg font-normal hover:underline"
+            onClick={() => setMenuOpen(false)}
+          >
+            Blogs
+          </Link>
+
           <Link
             href="/projects"
             className="block py-2 pr-6 text-lg font-normal hover:underline"
