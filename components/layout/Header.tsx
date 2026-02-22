@@ -79,7 +79,7 @@ export function Header() {
 
           <Link
             href="/blogs"
-            className={`text-lg  hover:underline ${pathname === "/blogs" ? "underline font-medium" : ""}`}
+            className={`text-lg  hover:underline ${pathname.includes("blogs") ? "underline font-medium" : ""}`}
           >
             Blogs
           </Link>
