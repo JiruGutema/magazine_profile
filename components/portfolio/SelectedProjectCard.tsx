@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { User } from "lucide-react";
 
 export type SelectedProjectCardProps = {
@@ -18,13 +17,10 @@ export default function SelectedProjectCard({
   userCount,
 }: SelectedProjectCardProps) {
   return (
-    <Card className="border border-border rounded-sm shadow-none">
-      <CardHeader>
-        <CardTitle className="text-xl font-bold font-serif">
-          {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+    <article className="border border-border rounded-sm p-6">
+      <h3 className="text-xl font-bold font-serif mb-2">
+        {title}
+      </h3>
         <p className="text-base text-muted-foreground mb-2">{description}</p>
         {showUserCount && typeof userCount === "number" && (
           <span
@@ -55,7 +51,6 @@ export default function SelectedProjectCard({
             {link.label}
           </Link>
         ))}
-      </CardContent>
-    </Card>
+    </article>
   );
 }

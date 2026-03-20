@@ -1,4 +1,3 @@
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import Link from "next/link";
 
 export default function Contribution() {
@@ -8,13 +7,10 @@ export default function Contribution() {
         Contributions
       </h2>
       <div className="grid gap-6">
-        <Card className="border border-border rounded-sm shadow-none">
-          <CardHeader>
-            <CardTitle className="text-xl font-normal font-serif">
-              React-Next-Folder Creator
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        <article>
+          <h3 className="text-xl font-bold font-serif mb-2">
+            React-Next-Folder Creator
+          </h3>
             <p className="text-base text-muted-foreground mb-2">
               A Node.js library that creates folders for React and Next.js
               projects. Contributed by enhancing user experience with commands
@@ -26,15 +22,11 @@ export default function Contribution() {
             >
               View Contribution
             </Link>
-          </CardContent>
-        </Card>
-        <Card className="border border-border rounded-sm shadow-none">
-          <CardHeader>
-            <CardTitle className="text-xl font-normal font-serif">
-              db4free-net-l10n
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        </article>
+        <article>
+          <h3 className="text-xl font-bold font-serif mb-2">
+            db4free-net-l10n
+          </h3>
             <p className="text-base text-muted-foreground mb-2">
               Contributed to the db4free.net platform (a free online database
               host) by adding an Afaan Oromoo Translation pool.
@@ -45,8 +37,7 @@ export default function Contribution() {
             >
               View Contribution
             </Link>
-          </CardContent>
-        </Card>
+        </article>
       </div>
     </section>
   );

@@ -27,7 +27,7 @@ export default function About() {
         <Link
           href="https://www.youtube.com/c/veritasium"
           target="_blank"
-          className="text-blue-600 font-bold hover:underline"
+          className=" text-blue-500 font-bold hover:underline"
           rel="noopener noreferrer"
         >
           Veritasium
@@ -36,7 +36,7 @@ export default function About() {
         <Link
           href="https://www.youtube.com/c/startalk"
           target="_blank"
-          className="text-blue-600 font-bold hover:underline"
+          className=" text-blue-500 font-bold hover:underline"
           rel="noopener noreferrer"
         >
           StarTalk
@@ -45,7 +45,7 @@ export default function About() {
         <Link
           href="https://www.youtube.com/c/3blue1brown"
           target="_blank"
-          className="text-blue-600 font-bold hover:underline"
+          className=" text-blue-500text-sky-700 font-bold hover:underline"
           rel="noopener noreferrer"
         >
           3Blue1Brown
@@ -53,7 +53,7 @@ export default function About() {
         ), always seeking to expand my perspective and creativity.
       </p><br />
       <p>
-        You can find my favourite playlist I listen to while coding <a className="text-blue-600 underline" href="https://open.spotify.com/playlist/1YIe34rcmLjCYpY9wJoM2p?si=3585a7cff5f743f6">here</a>
+        You can find my favourite playlist I listen to while coding <a className=" text-blue-500 font-bold underline" href="https://open.spotify.com/playlist/1YIe34rcmLjCYpY9wJoM2p?si=3585a7cff5f743f6">here</a>
       </p>
       <br />
       <span className="text-sm text-muted-foreground">

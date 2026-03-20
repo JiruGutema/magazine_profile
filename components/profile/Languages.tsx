@@ -2,17 +2,25 @@ import { CardHeader, CardTitle, CardContent, Card } from "../ui/card";
 
 export default function Languages() {
   return (
-    <Card className="border border-border rounded-sm shadow-none">
-      <CardHeader>
-        <CardTitle className="text-2xl font-normal font-serif">
+    <section>
+      <div>
+        <h2 className="text-3xl font-medium font-serif  mb-4">
           Languages
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-base">English (Fluent)</p>
-        <p className="text-base">Afaan Oromoo (Native)</p>
-        <p className="text-base">Amharic (Fluent)</p>
-      </CardContent>
-    </Card>
+        </h2>
+      </div>
+      <div>
+        <ul className="list-disc list-inside text-base mt-2">
+          <li>
+            <strong className="text-base font-medium">English:</strong> Fluent
+          </li>
+          <li>
+            <strong className="text-base font-medium">Afaan Oromoo:</strong> Native
+          </li>
+          <li>
+            <strong className="text-base font-medium">Amharic:</strong> Fluent
+          </li>
+        </ul>
+      </div>
+    </section>
   );
 }

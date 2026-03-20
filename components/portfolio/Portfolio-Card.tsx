@@ -1,18 +1,16 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function PortfolioCard() {
   return (
-    <Card className="border border-border rounded-none shadow-none">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-2xl font-bold font-serif">Featured Profile: A Software Engineer Student</CardTitle>
-        <CardDescription className="text-sm text-muted-foreground">
+    <section className="border border-border rounded-none p-6">
+      <header className="pb-2">
+        <h2 className="text-2xl font-bold font-serif">Featured Profile: A Software Engineer Student</h2>
+        <p className="text-sm text-muted-foreground">
           An in-depth look at a promising talent.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="grid md:grid-cols-2 gap-4">
+        </p>
+      </header>
+      <div className="grid md:grid-cols-2 gap-4">
         <div className="relative w-full h-48 md:h-auto">
           <Image
             src="/images/profile.png"
@@ -31,12 +29,12 @@ export function PortfolioCard() {
             {'"The future belongs to those who learn more skills and combine them in creative ways."'}
           </p>
           <Link href="/portfolio">
-            <Button className="mt-4 rounded-none border border-border bg-primary text-primary-foreground hover:bg-primary/90">
+            <span className="mt-4 inline-block rounded-none border border-border bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90">
               Read Full Profile
-            </Button>
+            </span>
           </Link>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   )
 }

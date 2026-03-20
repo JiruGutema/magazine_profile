@@ -1,31 +1,30 @@
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
-
 export default function Skill() {
   return (
-    <Card className="border border-border rounded-sm shadow-none">
-      <CardHeader>
-        <CardTitle className="text-2xl font-normal font-serif">Skills</CardTitle>
-      </CardHeader>
-      <CardContent className="">
-        <h3 className="text-lg font-normal">Programming Languages:</h3>
+    <section>
+      <h2 className="text-3xl font-medium font-serif mb-4">Skills</h2>
+      <div>
+        <h3 className="text-lg font-medium">Programming Languages:</h3>
         <p className="text-base mt-0">JavaScript,C#, Golang, Python, Java</p>
-        <h3 className="text-lg mt-3 font-normal">Frameworks & Libraries:</h3>
+        <h3 className="text-lg mt-3 font-medium">Backend:</h3>
         <p className="text-base">
-          Reactjs, Nextjs,Dotnet, Nodejs, Expressjs, Flutter, NestJS, Tailwindcss
+          .NET, Nestjs, Expressjs
         </p>
-        <h3 className="text-lg mt-3 font-normal">Databases:</h3>
-        <p className="text-base">Postgres, MySQL, MongoDB</p>
-        <h3 className="text-lg mt-3 font-normal">Tools & Platforms:</h3>
+        <h3 className="text-lg mt-3 font-medium">Frontend:</h3>
         <p className="text-base">
-          Git, Linux (advanced), Docker, Prisma, Neon, Github Projects, Figma,
-          Vercel, Onrender, Netlify, Cloudinary
+         Reactjs, Nextjs
+        </p>
+        <h3 className="text-lg mt-3 font-medium">Databases:</h3>
+        <p className="text-base">Postgres, MySQL, MongoDB</p>
+        <h3 className="text-lg mt-3 font-medium">Tools & Platforms:</h3>
+        <p className="text-base">
+          Git, Linux (advanced), Docker, Prisma, AWS, Vercel, Railway
         </p>
         <h3 className="text-lg mt-3 font-semibold">Concepts:</h3>
         <p className="text-base">
           AI/ML, Data Structures and Algorithms (DSA), Object Oriented
           Programming, Cryptography
         </p>
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   );
 }

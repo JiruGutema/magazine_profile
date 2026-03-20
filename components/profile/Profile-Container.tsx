@@ -1,5 +1,5 @@
 'use client';
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin, Link2, ImageDown, ImageIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
@@ -8,30 +8,20 @@ import SocialLinks from "../common/Social-Links";
 
 export default function ProfileContainer() {
   return (
-    <Card className="border border-border rounded-sm shadow-none">
-      <CardContent className="p-6 text-center">
-        <div className="relative w-48 h-48 mx-auto mb-4">
-          <Image
-            src="/images/profile_1.png"
-            alt="Jiru Gutema Profile"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-none cursor-pointer "
-            onClick={() => {
-              window.open('/images/profile_1.png', '_blank');
-            }}
-          />
-        </div>
+    <section>
+      <div className="">
+        <span className="flex items-center gap-x-4">
         <h2 className="text-3xl font-normal font-serif mb-1">Jiru Gutema</h2>
+        <span><a href="/images/profile.png" target="_blank" rel="noopener noreferrer"><ImageIcon className="text-sky-700"/></a></span></span>
         <p className="text-lg text-muted-foreground">
           Software Engineer | Fullstack Developer
         </p>
         <p className="text-sm text-muted-foreground">Addis Ababa, Ethiopia</p>
-        <div className="flex justify-center">
+        <div className="">
 
           <SocialLinks />
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   );
 }

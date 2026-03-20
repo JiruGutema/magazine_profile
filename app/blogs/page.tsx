@@ -5,10 +5,20 @@ import "dotenv/config";
 import { Suspense } from "react";
 
 export default async function BlogPage() {
-  const res = await fetch(`${baseUrl}/api/blogs`, { cache: "no-store" }).then(
-    (res) => res.json(),
-  );
-  const posts: BlogPost[] = res.data;
+  let posts: BlogPost[] = [];
+
+  try {
+    const res = await fetch(`${baseUrl}/api/blogs`, { cache: "no-store" });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch blogs: ${res.status}`);
+    }
+
+    const data = await res.json();
+    posts = data.data || [];
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    posts = [];
+  }
 
   return (
     <div className="space-y-8">
@@ -28,6 +38,7 @@ export default async function BlogPage() {
                <Suspense fallback={<div>Loading content...</div>}>
                         <BlogCard
             key={post.id}
+        
             post={{ ...post, tags: Array.isArray(post.tags) ? post.tags : [] }}
           />
                   </Suspense>

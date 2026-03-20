@@ -1,4 +1,3 @@
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import Link from "next/link";
 
 export default function PublicActivity() {
@@ -8,13 +7,10 @@ export default function PublicActivity() {
         Public Activity
       </h2>
       <div className="grid gap-6">
-        <Card className="border border-border rounded-sm shadow-none">
-          <CardHeader>
-            <CardTitle className="text-xl font-normal font-serif">
-              Reactjs and Nextjs Mentor
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        <article>
+          <h3 className="text-xl font-bold font-serif mb-2">
+            Reactjs and Nextjs Mentor
+          </h3>
             <p className="text-base text-muted-foreground mb-2">
               Mentoring students in Advanced Frontend Development in Reactjs and
               Nextjs at{" "}
@@ -34,15 +30,11 @@ export default function PublicActivity() {
             >
               View Course
             </Link>
-          </CardContent>
-        </Card>
-        <Card className="border border-border rounded-sm shadow-none">
-          <CardHeader>
-            <CardTitle className="text-xl font-normal font-serif">
-              Backend and DSA Mentor
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        </article>
+        <article>
+          <h3 className="text-xl font-bold font-serif mb-2">
+            Backend and DSA Mentor
+          </h3>
             <p className="text-base text-muted-foreground mb-2">
               Mentoring students in Data Structures and Algorithms at{" "}
               {/* DSA */}{" "}
@@ -66,15 +58,11 @@ export default function PublicActivity() {
             >
               View Course
             </Link>
-          </CardContent>
-        </Card>
-        <Card className="border border-border rounded-sm shadow-none">
-          <CardHeader>
-            <CardTitle className="text-xl font-normal font-serif">
-              Frontend Mentor
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        </article>
+        <article>
+          <h3 className="text-xl font-bold font-serif mb-2">
+            Frontend Mentor
+          </h3>
             <p className="text-base text-muted-foreground mb-2">
               I was mentoring students in Frontend Development at{" "}
               <Link
@@ -91,15 +79,11 @@ export default function PublicActivity() {
             >
               View Certificate
             </Link>
-          </CardContent>
-        </Card>
-        <Card className="border border-border rounded-sm shadow-none">
-          <CardHeader>
-            <CardTitle className="text-xl font-normal font-serif">
-              Core Team Member
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        </article>
+        <article>
+          <h3 className="text-xl font-bold font-serif mb-2">
+            Core Team Member
+          </h3>
             <p className="text-base text-muted-foreground mb-2">
               As a core team member of the{" "}
               <Link
@@ -118,8 +102,7 @@ export default function PublicActivity() {
             >
               Check Certificate
             </Link>
-          </CardContent>
-        </Card>
+        </article>
       </div>
     </section>
   );

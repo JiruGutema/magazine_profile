@@ -1,7 +1,5 @@
 "use client";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { User } from "lucide-react";
 
@@ -51,14 +49,11 @@ export function ProjectDetailCard({
     fetchHideYoutubeData(), fetchPageMarkerData(), [];
   });
   return (
-    <Card
-      className="border border-border rounded-sm shadow-none"
+    <article
+      className="border border-border rounded-sm p-6 space-y-4"
       id={`project-${id}`}
     >
-      <CardHeader>
-        <CardTitle className="text-2xl font-semibold font-serif">{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
+      <h2 className="text-2xl font-semibold font-serif">{title}</h2>
         <p className="text-base text-muted-foreground">{description}</p>
         {note && <i className="text-sm italic mt-0 text-muted-foreground">{note}</i>}
         <div>
@@ -116,7 +111,7 @@ export function ProjectDetailCard({
         <div className="flex flex-wrap gap-4 pt-2">
           {liveDemoLink && (
             <Link href={liveDemoLink} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="rounded-sm border  border-border  bg-background">
+              <span className="inline-block rounded-sm border border-border bg-background px-3 py-2 text-sm hover:underline">
                 {title.includes("Firefox") ? (
                   <span className="ml-2">Install for Firefox</span>
                 ) : title.includes("Tooran") ? (
@@ -124,17 +119,14 @@ export function ProjectDetailCard({
                 ) : (
                   <span className="ml-2">Live Demo</span>
                 )}
-              </Button>
+              </span>
             </Link>
           )}
           {githubLink && (
             <Link href={githubLink} target="_blank" rel="noopener noreferrer">
-              <Button
-                variant="outline"
-                className="rounded-sm border border-border bg-transparent"
-              >
+              <span className="inline-block rounded-sm border border-border bg-transparent px-3 py-2 text-sm hover:underline">
                 View GitHub
-              </Button>
+              </span>
             </Link>
           )}
           {title.includes("Email Craft") && (
@@ -143,13 +135,12 @@ export function ProjectDetailCard({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant={'outline'} className="rounded-sm border border-border bg-transparent">
+              <span className="inline-block rounded-sm border border-border bg-transparent px-3 py-2 text-sm hover:underline">
                 <span className="ml-2">Demo Video</span>
-              </Button>
+              </span>
             </Link>
           )}
         </div>
-      </CardContent>
-    </Card>
+    </article>
   );
 }

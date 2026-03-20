@@ -11,6 +11,7 @@ import Contribution from "@/components/portfolio/Contribution";
 import PublicActivity from "@/components/portfolio/Public-Activity";
 import Testimonials from "@/components/profile/Testimonials";
 import SecondaryHeader from "@/components/layout/Secondary-Header";
+import Image from "next/image";
 
 export default function PortfolioPage() {
   return (

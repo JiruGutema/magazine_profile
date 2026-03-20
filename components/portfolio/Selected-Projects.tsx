@@ -1,8 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { useEffect, useState } from "react";
-import { User } from "lucide-react";
 import SelectedProjectCard, { SelectedProjectCardProps } from "./SelectedProjectCard";
 
 const projects: SelectedProjectCardProps[]  = [

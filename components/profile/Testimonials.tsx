@@ -7,8 +7,8 @@ export default function Testimonials() {
         Testimonials
       </h2>
       <div className="grid gap-6">
-        <Card className="border border-border rounded-sm shadow-none">
-          <CardContent className="p-6">
+        <section className="italic rounded-sm shadow-none">
+          <div className="">
             <p className="text-base italic mb-2">
               {'"To Whom It May Concern:"'}
             </p>
@@ -33,8 +33,8 @@ export default function Testimonials() {
                 Ethioware EdTech Initiative
               </a>
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
       </div>
     </section>
   );
