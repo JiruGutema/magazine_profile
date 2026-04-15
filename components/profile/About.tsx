@@ -45,15 +45,12 @@ export default function About() {
         <Link
           href="https://www.youtube.com/c/3blue1brown"
           target="_blank"
-          className=" text-blue-500text-sky-700 font-bold hover:underline"
+          className=" text-blue-500 font-bold hover:underline"
           rel="noopener noreferrer"
         >
           3Blue1Brown
         </Link>
         ), always seeking to expand my perspective and creativity.
-      </p><br />
-      <p>
-        You can find my favourite playlist I listen to while coding <a className=" text-blue-500 font-bold underline" href="https://open.spotify.com/playlist/1YIe34rcmLjCYpY9wJoM2p?si=3585a7cff5f743f6">here</a>
       </p>
       <br />
       <span className="text-sm text-muted-foreground">
@@ -67,7 +64,7 @@ export default function About() {
         </Button>
       </Link>
 
-        <i className="ml-2 fas fa-file-pdf text-zinc-500">last updated: oct, 2025</i>
+        <i className="ml-2 fas fa-file-pdf text-zinc-500">last updated: april, 2026</i>
       </span>
     </section>
   );
