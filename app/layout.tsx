@@ -1,18 +1,11 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { Header } from "@/components/layout/Header"
-import { Footer } from "@/components/layout/Footer"
-import { MagazineLayout } from "@/components/common/Magazine-Layout"
-
-const inter = Inter({ subsets: ["latin"] })
+import type React from "react";
+import type { Metadata } from "next";
+import "./globals.css";
+import { WikiShell } from "@/components/layout/Wiki-Shell";
 
 export const metadata: Metadata = {
   title: "Jiru Gutema | Software Engineer & Fullstack Developer Portfolio",
-  icons: {
-    icon: "/icon.png",
-  },
+  icons: { icon: "/icon.png" },
   description:
     "The official online portfolio of Jiru Gutema, a software engineer and fullstack developer student showcasing projects, skills, and experience.",
   keywords: [
@@ -35,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Jiru Gutema's Portfolio",
     images: [
       {
-        url: "/images/profile.jpg", 
+        url: "/images/profile.jpg",
         width: 1200,
         height: 630,
         alt: "Jiru Gutema's Software Engineering Portfolio",
@@ -52,26 +45,22 @@ export const metadata: Metadata = {
     creator: "@jirugutema",
     images: ["/images/profile.jpg"],
   },
-}
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="22Myp3cGeJIavTM3UD5CbQFQm32ClaDhSl1_HPJzMxA" />
+        <meta
+          name="google-site-verification"
+          content="22Myp3cGeJIavTM3UD5CbQFQm32ClaDhSl1_HPJzMxA"
+        />
       </head>
-      <body className={inter.className} style={{ scrollBehavior: "smooth" }} >
-        <Header />
-        <main className="">
-          {" "}
-          <MagazineLayout>{children}</MagazineLayout>
-        </main>
-        <Footer />
+      <body style={{ scrollBehavior: "smooth" }}>
+        <WikiShell>{children}</WikiShell>
       </body>
     </html>
-  )
+  );
 }
