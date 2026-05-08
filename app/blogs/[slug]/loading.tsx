@@ -1,65 +1,58 @@
 export default function Loading() {
   return (
-    <div className="max-w-4xl mx-auto animate-pulse">
-      {/* Back button skeleton */}
-      <div className="mb-8">
-        <div className="h-4 bg-muted rounded w-24"></div>
+    <>
+      <div className="firstHeading-wrap">
+        <h1 className="firstHeading">
+          <span className="skeleton skeleton-line lg" style={{ width: "70%" }} />
+        </h1>
+      </div>
+      <div className="siteSub">
+        <span className="skeleton skeleton-line" style={{ width: 240 }} />
       </div>
 
-      {/* Header skeleton */}
-      <div className="space-y-6 mb-12">
-        {/* Title */}
-        <div className="space-y-3">
-          <div className="h-12 bg-muted rounded w-3/4"></div>
-          <div className="h-12 bg-muted rounded w-1/2"></div>
-        </div>
-        
-        {/* Excerpt */}
-        <div className="space-y-2">
-          <div className="h-6 bg-muted rounded w-full"></div>
-          <div className="h-6 bg-muted rounded w-2/3"></div>
-        </div>
-
-        {/* Meta info */}
-        <div className="flex space-x-6">
-          <div className="h-4 bg-muted rounded w-20"></div>
-          <div className="h-4 bg-muted rounded w-24"></div>
-          <div className="h-4 bg-muted rounded w-16"></div>
-        </div>
-
-        {/* Tags */}
-        <div className="flex space-x-2">
-          <div className="h-6 bg-muted rounded w-16"></div>
-          <div className="h-6 bg-muted rounded w-20"></div>
-          <div className="h-6 bg-muted rounded w-18"></div>
-        </div>
+      <div className="article-meta-strip" style={{ marginTop: 12 }}>
+        <span className="skeleton skeleton-line" style={{ width: 120 }} />
+        <span className="skeleton skeleton-line" style={{ width: 80 }} />
+        <span className="skeleton skeleton-line" style={{ width: 100 }} />
       </div>
 
-      {/* Content skeleton */}
-      <div className="space-y-4 mb-12">
-        <div className="h-4 bg-muted rounded w-full"></div>
-        <div className="h-4 bg-muted rounded w-full"></div>
-        <div className="h-4 bg-muted rounded w-3/4"></div>
-        <div className="h-4 bg-muted rounded w-full"></div>
-        <div className="h-4 bg-muted rounded w-2/3"></div>
-        
-        {/* Code block skeleton */}
-        <div className="h-32 bg-muted rounded-lg"></div>
-        
-        <div className="h-4 bg-muted rounded w-full"></div>
-        <div className="h-4 bg-muted rounded w-full"></div>
-        <div className="h-4 bg-muted rounded w-1/2"></div>
-      </div>
+      <p>
+        <span className="skeleton skeleton-line" style={{ width: "100%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "98%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "92%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "75%" }} />
+      </p>
 
-      {/* Reactions skeleton */}
-      <div className="h-16 bg-muted rounded-lg mb-12"></div>
+      <h2>
+        <span className="skeleton skeleton-line md" style={{ width: "40%" }} />
+      </h2>
+      <p>
+        <span className="skeleton skeleton-line" style={{ width: "100%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "96%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "88%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "60%" }} />
+      </p>
 
-      {/* Footer skeleton */}
-      <div className="border-t border-border pt-8">
-        <div className="text-center">
-          <div className="h-12 bg-muted rounded w-40 mx-auto"></div>
-        </div>
-      </div>
-    </div>
+      <div
+        className="skeleton skeleton-block"
+        style={{ height: 140, margin: "12px 0" }}
+        aria-hidden
+      />
+
+      <p>
+        <span className="skeleton skeleton-line" style={{ width: "100%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "94%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "80%" }} />
+      </p>
+
+      <h2>
+        <span className="skeleton skeleton-line md" style={{ width: "30%" }} />
+      </h2>
+      <p>
+        <span className="skeleton skeleton-line" style={{ width: "100%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "97%" }} />
+        <span className="skeleton skeleton-line" style={{ width: "70%" }} />
+      </p>
+    </>
   );
 }
