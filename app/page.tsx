@@ -51,10 +51,6 @@ export default function PortfolioPage() {
       <div className="siteSub">Software engineer · Fullstack developer · Addis Ababa</div>
       <div className="contentSub" />
 
-      <p className="hatnote">
-        For other uses, see <a className="new" href="#">Gutema (disambiguation)</a>.
-      </p>
-
       <Infobox />
 
       <p>
@@ -71,7 +67,7 @@ export default function PortfolioPage() {
       </p>
 
       <p>
-        Gutema is known for several browser extensions and developer tools, including{" "}
+        Jiru is known for several browser extensions and developer tools, including{" "}
         <i>Hide YouTube Shorts</i> and <i>Page Marker</i> for{" "}
         <a href="https://www.mozilla.org/firefox/">Mozilla Firefox</a>, and the full-stack
         Gmail-integrated email composer <a href="https://email-craft-olive.vercel.app/"><i>Email Craft</i></a>.
@@ -81,7 +77,7 @@ export default function PortfolioPage() {
       </p>
 
       <p>
-        Outside of his employment, Gutema mentors students in React, Next.js, backend
+        Outside of his employment, Jiru mentors students in React, Next.js, backend
         development and data structures at <a href="https://nexustutorial.vercel.app/">Nexus Tutorial</a>,
         and has served as a core team member of the AWS Cloud Club at Addis Ababa University.
         He has contributed Afaan Oromoo localisation to <a href="https://www.db4free.net/">db4free.net</a>{" "}
@@ -92,12 +88,11 @@ export default function PortfolioPage() {
 
       {/* ── EARLY LIFE ── */}
       <h2 id="early">
-        Early life and education <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Early life and education      </h2>
 
       <h3 id="school">School and bootcamps</h3>
       <p>
-        Gutema was raised in Addis Ababa and educated in the Ethiopian public school
+        Jiru was raised in Addis Ababa and educated in the Ethiopian public school
         system. In early 2025, he completed a Google-backed full-stack web-development
         bootcamp known locally as the <i>Coding Academy</i> (African to Silicon Valley),
         where he studied advanced data structures and algorithms — including graph and
@@ -112,7 +107,7 @@ export default function PortfolioPage() {
 
       <h3 id="university">University</h3>
       <p>
-        Since January 2023, Gutema has been pursuing a Bachelor of Science in{" "}
+        Since January 2023, Jiru has been pursuing a Bachelor of Science in{" "}
         <a href="https://en.wikipedia.org/wiki/Software_engineering">software engineering</a>{" "}
         at Addis Ababa University, with expected graduation in September 2027. His
         coursework spans web development, mobile application development with{" "}
@@ -123,8 +118,7 @@ export default function PortfolioPage() {
 
       {/* ── CAREER ── */}
       <h2 id="career">
-        Career <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Career      </h2>
 
       <div className="quotebox">
         <div className="qb-q">
@@ -144,7 +138,7 @@ export default function PortfolioPage() {
 
       <h3 id="ethioware">Ethioware EdTech Initiative (2025)</h3>
       <p>
-        Gutema's first professional engagement was a backend internship at the{" "}
+        Jiru's first professional engagement was a backend internship at the{" "}
         <a href="https://www.linkedin.com/company/ethioware">Ethioware EdTech Initiative</a>{" "}
         from January to May 2025. He collaborated on backend development to build and
         enhance server-side applications using <a href="https://expressjs.com/">Express.js</a>{" "}
@@ -156,7 +150,7 @@ export default function PortfolioPage() {
 
       <h3 id="gulit">Gulit Marketplace (2025)</h3>
       <p>
-        Between July and December 2025, Gutema served as a part-time backend developer
+        Between July and December 2025, Jiru served as a part-time backend developer
         at <i>Gulit Marketplace</i>. He designed and implemented scalable backend
         services for authentication, admin dashboards and user management using
         Express.js, <a href="https://www.postgresql.org/">PostgreSQL</a> and{" "}
@@ -166,7 +160,7 @@ export default function PortfolioPage() {
 
       <h3 id="current">Current roles (2026–present)</h3>
       <p>
-        Since February 2026, Gutema has held a fullstack-developer role at{" "}
+        Since February 2026, Jiru has held a fullstack-developer role at{" "}
         <i>Mereb Technologies</i>, where he develops and maintains full-stack
         features for Bahmni-based healthcare software systems, including legacy
         application maintenance, improvements, and the addition of new functionality
@@ -183,13 +177,12 @@ export default function PortfolioPage() {
 
       {/* ── NOTABLE PROJECTS ── */}
       <h2 id="projects">
-        Notable projects <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Notable projects      </h2>
       <p className="hatnote">
         Main article: <a className="new" href="/projects">List of works by Jiru Gutema</a>
       </p>
       <p>
-        In addition to his employment, Gutema has authored several independent
+        In addition to his employment, Jiru has authored several independent
         software projects, primarily web applications, browser extensions and
         developer tools. A selection are summarised in the table below; a fuller
         list is available at <a href="/projects">List of works by Jiru Gutema</a>.
@@ -229,10 +222,9 @@ export default function PortfolioPage() {
 
       {/* ── OSS ── */}
       <h2 id="oss">
-        Open-source contributions <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Open-source contributions      </h2>
       <p>
-        Gutema has contributed to several open-source projects, with a focus on
+        Jiru has contributed to several open-source projects, with a focus on
         developer tooling and localisation:
       </p>
       <ul>
@@ -254,11 +246,9 @@ export default function PortfolioPage() {
 
       {/* ── ACTIVITY ── */}
       <h2 id="activity">
-        Public coding activity <span className="editsection"><a href="#">edit</a></span>
-      </h2>
-      <ContributionGraph />
+        Public coding activity      </h2>
       <p>
-        Gutema's public <a href="https://github.com/JiruGutema">GitHub</a> account
+        Jiru's public <a href="https://github.com/JiruGutema">GitHub</a> account
         (<a className="external" href="https://github.com/JiruGutema">@JiruGutema</a>)
         contains the source for most of the projects listed above, including{" "}
         <i>Email Craft</i>, <i>KaiShare</i>, <i>Hide YouTube Shorts</i> and{" "}
@@ -269,10 +259,9 @@ export default function PortfolioPage() {
 
       {/* ── VIEWS ── */}
       <h2 id="views">
-        Views and influences <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Views and influences      </h2>
       <p>
-        Gutema has cited educational and science programming as a continuing influence
+        Jiru has cited educational and science programming as a continuing influence
         on his approach to engineering, including{" "}
         <a className="external" href="https://www.youtube.com/c/veritasium">Veritasium</a>,{" "}
         <a className="external" href="https://www.youtube.com/c/startalk">StarTalk</a> and{" "}
@@ -284,42 +273,38 @@ export default function PortfolioPage() {
 
       {/* ── RECEPTION ── */}
       <h2 id="reception">
-        Reception <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Reception      </h2>
       <p>
-        Gutema has been described in generally positive terms by colleagues and mentors.
-        Anteneh Yimmam, Education Lead at the Ethioware EdTech Initiative, noted Gutema's
+        Jiru has been described in generally positive terms by colleagues and mentors.
+        Anteneh Yimmam, Education Lead at the Ethioware EdTech Initiative, noted Jiru's
         initiative in suggesting React as the framework for the company website redesign,
         and described him as a team player who handles project requirements carefully and
-        delivers timely updates. Yimmam concluded that Gutema "will excel in any backend
+        delivers timely updates. Yimmam concluded that Jiru "will excel in any backend
         web development role he pursues" and that he would "welcome the opportunity to
         work with him again".
       </p>
 
       {/* ── WRITINGS ── */}
       <h2 id="writings">
-        Selected writings <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Selected writings      </h2>
       <p>
-        A list of Gutema's published writings is available at <a href="/blogs">/blogs</a>.
+        A list of Jiru's published writings is available at <a href="/blogs">/blogs</a>.
         Topics include software development, web technologies and programming best
         practices.
       </p>
 
       {/* ── PERSONAL ── */}
       <h2 id="personal">
-        Personal life <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Personal life      </h2>
       <p>
-        Gutema is a native speaker of <a href="https://en.wikipedia.org/wiki/Oromo_language">Afaan Oromoo</a>{" "}
+        Jiru is a native speaker of <a href="https://en.wikipedia.org/wiki/Oromo_language">Afaan Oromoo</a>{" "}
         and is fluent in <a href="https://en.wikipedia.org/wiki/Amharic">Amharic</a> and English.
         He resides in Addis Ababa.
       </p>
 
       {/* ── SEE ALSO ── */}
       <h2 id="seealso">
-        See also <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        See also      </h2>
       <div className="col2">
         <ul>
           <li><a href="/projects">List of works by Jiru Gutema</a></li>
@@ -332,8 +317,7 @@ export default function PortfolioPage() {
 
       {/* ── EXTERNAL ── */}
       <h2 id="external">
-        External links <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        External links      </h2>
       <ul>
         <li><a className="external" href="https://github.com/JiruGutema">Jiru Gutema</a> on GitHub</li>
         <li><a className="external" href="https://www.linkedin.com/in/jiru-gutema">Jiru Gutema</a> on LinkedIn</li>

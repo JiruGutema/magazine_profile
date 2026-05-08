@@ -12,11 +12,11 @@ export function Infobox() {
                 src="/images/profile.png"
                 alt="Jiru Gutema"
                 width={200}
-                height={250}
+                height={200}
                 priority
               />
             </div>
-            <div className="cap">Gutema in Addis Ababa, {new Date().getFullYear()}</div>
+            <div className="cap">Jiru in Addis Ababa, {new Date().getFullYear()}</div>
           </td>
         </tr>
         <tr><td className="ib-section" colSpan={2}>Personal details</td></tr>

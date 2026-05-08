@@ -68,8 +68,7 @@ export default function ProjectsPage() {
       </table>
 
       <h2 id="details">
-        Project details <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        Project details      </h2>
 
       {(projects as Project[]).map((p, i) => (
         <section key={`detail-${p.id}-${i}`} id={`project-${p.id}`}>
@@ -106,8 +105,7 @@ export default function ProjectsPage() {
       ))}
 
       <h2 id="seealso">
-        See also <span className="editsection"><a href="#">edit</a></span>
-      </h2>
+        See also      </h2>
       <div className="col2">
         <ul>
           <li><Link href="/">Jiru Gutema</Link></li>

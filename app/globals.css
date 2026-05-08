@@ -373,7 +373,7 @@ sup.reference::after  { content: "]"; }
   border-bottom: 1px solid var(--rule-soft);
 }
 .ib-photo .ph {
-  width: 200px; aspect-ratio: 4/5;
+  width: 200px; aspect-ratio: 1/1;
   margin: 0 auto;
   background: repeating-linear-gradient(45deg, var(--ph-a) 0 8px, var(--ph-b) 8px 16px);
   border: 1px solid var(--rule-soft);
@@ -381,7 +381,7 @@ sup.reference::after  { content: "]"; }
   font-family: var(--serif); font-size: 38px; color: var(--ink-3);
   overflow: hidden;
 }
-.ib-photo .ph img { width: 100%; height: 100%; object-fit: cover; }
+.ib-photo .ph img { width: 100%; height: 100%; object-fit: contain; }
 .ib-photo .cap {
   font-size: 11px; color: var(--ink-2); margin-top: 6px; line-height: 1.4;
 }
