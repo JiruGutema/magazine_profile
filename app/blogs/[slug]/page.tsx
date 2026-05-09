@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, User, Tag } from "lucide-react";
 import BlogReactions from "@/components/blog/BlogReactions";
 import MarkdownRenderer from "@/components/blog/MarkdownRenderer";
 import { BlogPost } from "@/lib/types";
@@ -24,7 +23,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Preprocess data
   const post: BlogPost = {
     id: res.id,
     title: res.title,
@@ -39,100 +37,68 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     dislikes: res.dislikes,
     coverImage: res.coverImage || undefined,
   };
-  const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
+  const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-GB", {
     day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 
   return (
-    <article className="max-w-4xl mx-auto">
-      {/* Back button */}
-      <div className="mb-8">
-        <Link
-          href="/blogs"
-          className="inline-flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Blog</span>
-        </Link>
-      </div>
-
-      {/* Article header */}
-      <header className="space-y-6 mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
-          {post.title}
+    <>
+      <div className="firstHeading-wrap">
+        <h1 className="firstHeading">
+          <i>{post.title}</i>
         </h1>
-
-        <p className="text-xl text-muted-foreground leading-relaxed">
-          {post.excerpt}
-        </p>
-
-        {/* Meta information */}
-        <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
-          <div className="flex items-center space-x-2">
-            <User className="w-4 h-4" />
-            <span>{post.author}</span>
-          </div>
-
-          <div className="flex items-center space-x-2">
-            <Calendar className="w-4 h-4" />
-            <span>{formattedDate}</span>
-          </div>
-
-          <div className="flex items-center space-x-2">
-            <Clock className="w-4 h-4" />
-            <span>{post.readTime.toString()} min read</span>
-          </div>
-        </div>
-
-        {/* Tags */}
-        <div className="flex items-center space-x-2">
-          <Tag className="w-4 h-4 text-muted-foreground" />
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 text-sm bg-secondary text-secondary-foreground rounded-none"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </header>
-
-      {/* Article content */}
-      <div className="mb-12">
-        {/* Client component wrapped in Suspense */}
-        <Suspense fallback={<div>Loading content...</div>}>
-          <MarkdownRenderer content={post.content} />
-        </Suspense>
+      </div>
+      <div className="siteSub">
+        Essay by {post.author} &middot; published {formattedDate} &middot;{" "}
+        {post.readTime} min read
       </div>
 
-      {/* Reactions */}
-      <div className="mb-12">
-        <Suspense fallback={<div>Loading reactions...</div>}>
-          <BlogReactions
-            postId={post.id.toString()}
-            initialLikes={post.likes}
-            initialDislikes={post.dislikes}
-          />
-        </Suspense>
+      <p className="hatnote">
+        Main article: <Link href="/blogs">Writings by Jiru Gutema</Link>.
+      </p>
+
+      <p>
+        <i>{post.excerpt}</i>
+      </p>
+
+      <Suspense fallback={<p><i>Loading content&hellip;</i></p>}>
+        <MarkdownRenderer content={post.content} />
+      </Suspense>
+
+      <h2 id="reactions">
+        Reader reactions      </h2>
+      <Suspense fallback={<p><i>Loading reactions&hellip;</i></p>}>
+        <BlogReactions
+          postId={post.id.toString()}
+          initialLikes={post.likes}
+          initialDislikes={post.dislikes}
+        />
+      </Suspense>
+
+      <h2 id="seealso">
+        See also      </h2>
+      <div className="col2">
+        <ul>
+          <li><Link href="/blogs">Writings by Jiru Gutema</Link></li>
+          <li><Link href="/projects">List of works by Jiru Gutema</Link></li>
+          <li><Link href="/">Jiru Gutema</Link></li>
+        </ul>
       </div>
 
-      {/* Related posts or navigation */}
-      <footer className="border-t border-border pt-8">
-        <div className="text-center">
-          <Link
-            href="/blogs"
-            className="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
-          >
-            <span>Read More Articles</span>
-          </Link>
+      {post.tags.length > 0 && (
+        <div className="catlinks">
+          <b>Tags</b>:{" "}
+          {post.tags.map((tag, i) => (
+            <span key={tag}>
+              <a href="#">{tag}</a>
+              {i < post.tags.length - 1 && <span className="catbar">|</span>}
+            </span>
+          ))}
         </div>
-      </footer>
-    </article>
+      )}
+    </>
   );
 }
 
