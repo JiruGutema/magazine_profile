@@ -27,7 +27,7 @@ export default function Testimonials() {
               </a>
               , A Education Lead at{" "}
               <a
-                href="https://www.linkedin.com/company/ethioware"
+                href="https://ethioware.org/"
                 className="text-blue-700 underline"
               >
                 Ethioware EdTech Initiative

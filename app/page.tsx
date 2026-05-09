@@ -16,9 +16,10 @@ const TOC: TocItem[] = [
     id: "career",
     label: "Career",
     children: [
-      { id: "ethioware", label: "Ethioware EdTech (2025)" },
+      { id: "aau", label: "Addis Ababa University (2026)" },
+      { id: "mereb", label: "Mereb Technologies (2026)" },
       { id: "gulit", label: "Gulit Marketplace (2025)" },
-      { id: "current", label: "Current roles (2026–present)" },
+      { id: "ethioware", label: "Ethioware EdTech (2025)" },
     ],
   },
   { id: "projects", label: "Notable projects" },
@@ -58,11 +59,11 @@ export default function PortfolioPage() {
         <a href="https://en.wikipedia.org/wiki/Software_engineer">software engineer</a> and{" "}
         <a href="https://en.wikipedia.org/wiki/Solution_stack">full-stack developer</a> based in{" "}
         <a href="https://en.wikipedia.org/wiki/Addis_Ababa">Addis Ababa</a>. He is currently
-        an undergraduate at <a href="https://www.aau.edu.et/">Addis Ababa University</a>, where
+        an undergraduate at <a href="https://aau.edu.et/">Addis Ababa University</a>, where
         he is concurrently developing the university's{" "}
         <a href="https://angular.dev/">Angular</a>/<a href="https://dotnet.microsoft.com/">.NET</a>-based
         regional property management system, and a fullstack developer at{" "}
-        <a href="https://merebtech.com/">Mereb Technologies</a> on a{" "}
+        <a href="https://www.merebtechnology.com/">Mereb Technologies</a> on a{" "}
         <a href="https://bahmni.org/">Bahmni</a>-based healthcare platform.
       </p>
 
@@ -132,20 +133,29 @@ export default function PortfolioPage() {
           —{" "}
           <a href="https://www.linkedin.com/in/anteneh-yimmam0/">Anteneh Yimmam</a>,
           Education Lead at{" "}
-          <a href="https://www.linkedin.com/company/ethioware">Ethioware EdTech Initiative</a>
+          <a href="https://ethioware.org/">Ethioware EdTech Initiative</a>
         </div>
       </div>
 
-      <h3 id="ethioware">Ethioware EdTech Initiative (2025)</h3>
+      <h3 id="aau">Addis Ababa University (2026)</h3>
       <p>
-        Jiru's first professional engagement was a backend internship at the{" "}
-        <a href="https://www.linkedin.com/company/ethioware">Ethioware EdTech Initiative</a>{" "}
-        from January to May 2025. He collaborated on backend development to build and
-        enhance server-side applications using <a href="https://expressjs.com/">Express.js</a>{" "}
-        on <a href="https://nodejs.org/">Node.js</a> with a{" "}
-        <a href="https://www.mysql.com/">MySQL</a> backing store, and contributed to
-        the company website redesign project, focusing on reliable backend architecture
-        and workflows.
+        Since March 2026, Jiru has worked remotely as a fullstack developer at{" "}
+        <a href="https://aau.edu.et/">Addis Ababa University</a>, contributing
+        to a Regional Property Management System (PMS) built with{" "}
+        <a href="https://angular.dev/">Angular</a> and{" "}
+        <a href="https://dotnet.microsoft.com/">.NET Core</a>. The system streamlines
+        property registration, tenant management, billing, payments, and reporting
+        across a scalable, multi-tenant platform serving regional property needs.
+      </p>
+
+      <h3 id="mereb">Mereb Technologies (2026)</h3>
+      <p>
+        Since February 2026, Jiru has held a fullstack-developer role at{" "}
+        <a href="https://www.merebtechnology.com/">Mereb Technologies</a>, where he develops
+        and maintains full-stack features for <a href="https://bahmni.org/">Bahmni</a>-based
+        healthcare software systems, including legacy application maintenance,
+        improvements, and the addition of new functionality to support clinical
+        operations.
       </p>
 
       <h3 id="gulit">Gulit Marketplace (2025)</h3>
@@ -158,21 +168,16 @@ export default function PortfolioPage() {
         role-based access control and integrated them with frontend dashboards.
       </p>
 
-      <h3 id="current">Current roles (2026–present)</h3>
+      <h3 id="ethioware">Ethioware EdTech Initiative (2025)</h3>
       <p>
-        Since February 2026, Jiru has held a fullstack-developer role at{" "}
-        <i>Mereb Technologies</i>, where he develops and maintains full-stack
-        features for Bahmni-based healthcare software systems, including legacy
-        application maintenance, improvements, and the addition of new functionality
-        to support clinical operations.
-      </p>
-      <p>
-        Concurrently, since March 2026, he has worked remotely as a fullstack developer
-        at Addis Ababa University, contributing to a Regional Property Management
-        System (PMS) built with <a href="https://angular.dev/">Angular</a> and{" "}
-        <a href="https://dotnet.microsoft.com/">.NET Core</a>. The system streamlines
-        property registration, tenant management, billing, payments, and reporting
-        across a scalable, multi-tenant platform serving regional property needs.
+        Jiru's first professional engagement was a backend internship at the{" "}
+        <a href="https://ethioware.org/">Ethioware EdTech Initiative</a>{" "}
+        from January to May 2025. He collaborated on backend development to build and
+        enhance server-side applications using <a href="https://expressjs.com/">Express.js</a>{" "}
+        on <a href="https://nodejs.org/">Node.js</a> with a{" "}
+        <a href="https://www.mysql.com/">MySQL</a> backing store, and contributed to
+        the company website redesign project, focusing on reliable backend architecture
+        and workflows.
       </p>
 
       {/* ── NOTABLE PROJECTS ── */}
@@ -311,7 +316,7 @@ export default function PortfolioPage() {
           <li><a href="/blogs">Writings by Jiru Gutema</a></li>
           <li><a href="https://bahmni.org/">Bahmni</a></li>
           <li><a href="https://openmrs.org/">OpenMRS</a></li>
-          <li><a href="https://www.aau.edu.et/">Addis Ababa University</a></li>
+          <li><a href="https://aau.edu.et/">Addis Ababa University</a></li>
         </ul>
       </div>
 

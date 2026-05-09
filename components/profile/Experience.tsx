@@ -14,7 +14,7 @@ export default function Experience() {
             Addis Ababa University · Full-time
           </p>
           <p className="text-base text-muted-foreground">
-            Addis Ababa, Ethiopia · Remote · Mar 2026 – Present
+            Addis Ababa, Ethiopia · Remote · Mar 2026
           </p>
           <ul className="list-disc list-inside text-base mt-2 space-y-1">
             <li>
@@ -37,7 +37,7 @@ export default function Experience() {
             Mereb Technologies · Full-time
           </p>
           <p className="text-base text-muted-foreground">
-            Addis Ababa, Ethiopia · On-site · Feb 2026 – Present
+            Addis Ababa, Ethiopia · On-site · Feb 2026
           </p>
           <ul className="list-disc list-inside text-base mt-2 space-y-1">
             <li>
