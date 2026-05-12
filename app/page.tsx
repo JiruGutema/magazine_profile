@@ -108,7 +108,7 @@ export default function PortfolioPage() {
 
       <h3 id="university">University</h3>
       <p>
-        Since January 2023, Jiru has been pursuing a Bachelor of Science in{" "}
+        Since January 2022, Jiru has been pursuing a Bachelor of Science in{" "}
         <a href="https://en.wikipedia.org/wiki/Software_engineering">software engineering</a>{" "}
         at Addis Ababa University, with expected graduation in September 2027. His
         coursework spans web development, mobile application development with{" "}

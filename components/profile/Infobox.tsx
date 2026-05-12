@@ -23,7 +23,7 @@ export function Infobox() {
         <tr className="ib-row"><th>Born</th><td>Jiru Gutema<br />Addis Ababa, Ethiopia</td></tr>
         <tr className="ib-row"><th>Residence</th><td>Addis Ababa, Ethiopia</td></tr>
         <tr className="ib-row"><th>Nationality</th><td>Ethiopian</td></tr>
-        <tr className="ib-row"><th>Education</th><td>Addis Ababa University (BSc Software Engineering, 2023–2027)</td></tr>
+        <tr className="ib-row"><th>Education</th><td>Addis Ababa University (BSc Software Engineering, 2022–2027)</td></tr>
         <tr className="ib-row"><th>Occupation</th><td>Software engineer · Fullstack developer</td></tr>
         <tr className="ib-row">
           <th>Employer(s)</th>
