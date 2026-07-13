@@ -31,15 +31,16 @@ export default async function BlogPage() {
 
       <p>
         This is a chronological list of writings authored by{" "}
-        <Link href="/">Jiru Gutema</Link>, covering software development,
-        web technologies and programming best practices. The list is ordered by
+        <Link href="/">Jiru Gutema</Link>, covering software development, web
+        technologies and programming best practices. The list is ordered by
         publication date, with the most recent entries first.
       </p>
 
       {posts.length === 0 ? (
         <p>
           <i>
-            No writings have been catalogued at this time. Please check back later.
+            No writings have been catalogued at this time. Please check back
+            later.
           </i>
         </p>
       ) : (
@@ -57,11 +58,14 @@ export default async function BlogPage() {
           <tbody>
             {posts.map((post) => {
               const tags = Array.isArray(post.tags) ? post.tags : [];
-              const date = new Date(post.publishedAt).toLocaleDateString("en-GB", {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              });
+              const date = new Date(post.publishedAt).toLocaleDateString(
+                "en-GB",
+                {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                },
+              );
               return (
                 <tr key={post.id}>
                   <td>
@@ -80,14 +84,6 @@ export default async function BlogPage() {
         </table>
       )}
 
-      <h2 id="seealso">
-        See also      </h2>
-      <div className="col2">
-        <ul>
-          <li><Link href="/">Jiru Gutema</Link></li>
-          <li><Link href="/projects">List of works by Jiru Gutema</Link></li>
-        </ul>
-      </div>
     </>
   );
 }

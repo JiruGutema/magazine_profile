@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { WikiShell } from "@/components/layout/Wiki-Shell";
+import { getContent } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Jiru Gutema | Software Engineer & Fullstack Developer Portfolio",
@@ -47,9 +48,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const [header, footer] = await Promise.all([
+    getContent("header"),
+    getContent("footer"),
+  ]);
+
   return (
     <html lang="en">
       <head>
@@ -59,7 +65,9 @@ export default function RootLayout({
         />
       </head>
       <body style={{ scrollBehavior: "smooth" }}>
-        <WikiShell>{children}</WikiShell>
+        <WikiShell header={header} footer={footer}>
+          {children}
+        </WikiShell>
       </body>
     </html>
   );

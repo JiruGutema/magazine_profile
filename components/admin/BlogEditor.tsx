@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, Save, Eye, Edit3 } from "lucide-react";
 import MarkdownRenderer from "@/components/blog/MarkdownRenderer";
-import { generateSlug } from "@/lib/utils";
+import { Button, Card, Field, SaveStatus, TextArea, TextInput, type SaveState } from "./ui";
 
 interface BlogEditorProps {
   postId: number | null;
@@ -11,270 +10,169 @@ interface BlogEditorProps {
   onCancel: () => void;
 }
 
+interface BlogForm {
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  readTime: string;
+  tags: string;
+  coverImage: string;
+}
+
+const BLANK: BlogForm = {
+  title: "",
+  excerpt: "",
+  content: "",
+  author: "",
+  readTime: "",
+  tags: "",
+  coverImage: "",
+};
+
 export default function BlogEditor({ postId, onSave, onCancel }: BlogEditorProps) {
-  const [formData, setFormData] = useState({
-    title: "",
-    slug: "",
-    excerpt: "",
-    content: "",
-    author: "",
-    readTime: "",
-    tags: "",
-    coverImage: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
+  const [form, setForm] = useState<BlogForm>(BLANK);
+  const [loading, setLoading] = useState(false);
+  const [state, setState] = useState<SaveState>({ kind: "idle" });
+  const [preview, setPreview] = useState(false);
+  const isNew = !postId;
 
   useEffect(() => {
-    if (postId) {
-      fetchPost();
-    }
+    if (!postId) return;
+    setLoading(true);
+    fetch(`/api/admin/blogs/${postId}`)
+      .then((r) => r.json())
+      .then((data) =>
+        setForm({
+          title: data.title ?? "",
+          excerpt: data.excerpt ?? "",
+          content: data.content ?? "",
+          author: data.author ?? "",
+          readTime: data.readTime ?? "",
+          tags: data.tags ?? "",
+          coverImage: data.coverImage ?? "",
+        }),
+      )
+      .catch((error) => console.error("Failed to fetch post:", error))
+      .finally(() => setLoading(false));
   }, [postId]);
 
-  const fetchPost = async () => {
-    setIsLoading(true);
+  const set = (patch: Partial<BlogForm>) =>
+    setForm((prev) => ({ ...prev, ...patch }));
+
+  const submit = async () => {
+    setState({ kind: "saving" });
     try {
-      const res = await fetch(`/api/admin/blogs/${postId}`);
-      const data = await res.json();
-      setFormData({
-        title: data.title,
-        slug: "",
-        excerpt: data.excerpt,
-        content: data.content,
-        author: data.author,
-        readTime: data.readTime,
-        tags: data.tags,
-        coverImage: data.coverImage || "",
-      });
-    } catch (error) {
-      console.error("Failed to fetch post:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-
-  const handleTitleChange = (title: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      title,
-      slug: prev.slug || generateSlug(title),
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSaving(true);
-
-    try {
-      const url = postId ? `/api/admin/blogs/${postId}` : "/api/admin/blogs";
-      const method = postId ? "PUT" : "POST";
-
+      const url = isNew ? "/api/admin/blogs" : `/api/admin/blogs/${postId}`;
       const res = await fetch(url, {
-        method,
+        method: isNew ? "POST" : "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(form),
       });
-
-      if (res.ok) {
-        onSave();
-      } else {
-        const error = await res.json();
-        alert(error.error || "Failed to save post");
+      if (!res.ok) {
+        const e = await res.json().catch(() => ({}));
+        setState({ kind: "err", message: e.error || "Failed to save" });
+        return;
       }
-    } catch (error) {
-      console.error("Failed to save post:", error);
-      alert("Failed to save post");
-    } finally {
-      setIsSaving(false);
+      setState({ kind: "ok", message: "Saved" });
+      onSave();
+    } catch {
+      setState({ kind: "err", message: "Failed to save" });
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <p className="text-muted-foreground">Loading...</p>
-      </div>
-    );
-  }
+  if (loading) return <Card>Loading…</Card>;
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-card border-b border-border sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={onCancel}
-              className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back</span>
-            </button>
-            <div className="flex items-center space-x-3">
-              <button
-                type="button"
-                onClick={() => setShowPreview(!showPreview)}
-                className="flex items-center space-x-2 px-4 py-2 border border-border rounded-md text-foreground hover:bg-accent transition-colors"
-              >
-                {showPreview ? (
-                  <>
-                    <Edit3 className="w-4 h-4" />
-                    <span>Edit</span>
-                  </>
-                ) : (
-                  <>
-                    <Eye className="w-4 h-4" />
-                    <span>Preview</span>
-                  </>
-                )}
-              </button>
-              <button
-                onClick={handleSubmit}
-                disabled={isSaving}
-                className="flex items-center space-x-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
-              >
-                <Save className="w-4 h-4" />
-                <span>{isSaving ? "Saving..." : "Save Post"}</span>
-              </button>
-            </div>
-          </div>
+    <Card
+      title={isNew ? "New post" : "Edit post"}
+      actions={
+        <div className="admin-item-actions">
+          <Button small onClick={() => setPreview((p) => !p)}>
+            {preview ? "Edit" : "Preview"}
+          </Button>
+          <Button small onClick={onCancel}>
+            ← Back
+          </Button>
         </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {showPreview ? (
-          <div className="space-y-8">
-            <div className="bg-card border border-border rounded-lg p-8">
-              <h1 className="text-4xl font-bold text-foreground mb-4">{formData.title || "Untitled Post"}</h1>
-              <p className="text-xl text-muted-foreground mb-6">{formData.excerpt || "No excerpt provided"}</p>
-              <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-8">
-                <span>{formData.author || "Unknown Author"}</span>
-                <span>•</span>
-                <span>{formData.readTime || "0"} min read</span>
-              </div>
-              {formData.tags && (
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {formData.tags.split(",").map((tag, i) => (
-                    <span key={i} className="px-3 py-1 text-sm bg-secondary text-secondary-foreground rounded-md">
-                      {tag.trim()}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <div className="prose prose-gray dark:prose-invert max-w-none">
-                {formData.content ? (
-                  <MarkdownRenderer content={formData.content} />
-                ) : (
-                  <p className="text-muted-foreground italic">No content yet...</p>
-                )}
-              </div>
-            </div>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Title *
-            </label>
-            <input
-              type="text"
-              value={formData.title}
-              onChange={(e) => handleTitleChange(e.target.value)}
-              required
-              className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              placeholder="Enter post title"
+      }
+    >
+      {preview ? (
+        <div
+          className="vector-body"
+          style={{
+            border: "1px solid var(--rule-soft)",
+            padding: "14px 18px",
+            background: "var(--content-bg)",
+          }}
+        >
+          <h1 className="firstHeading">
+            <i>{form.title || "Untitled Post"}</i>
+          </h1>
+          <div className="siteSub">{form.excerpt || "No excerpt provided"}</div>
+          {form.content ? (
+            <MarkdownRenderer content={form.content} />
+          ) : (
+            <p className="admin-help">No content yet…</p>
+          )}
+        </div>
+      ) : (
+        <>
+          <Field label="Title">
+            <TextInput value={form.title} onChange={(v) => set({ title: v })} />
+          </Field>
+          <Field label="Excerpt">
+            <TextArea
+              value={form.excerpt}
+              onChange={(v) => set({ excerpt: v })}
+              rows={2}
+              mono={false}
             />
-          </div>
-
-
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Excerpt *
-            </label>
-            <textarea
-              value={formData.excerpt}
-              onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-              required
-              rows={3}
-              className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              placeholder="Brief description of the post"
+          </Field>
+          <Field label="Content" help="Markdown supported.">
+            <TextArea
+              value={form.content}
+              onChange={(v) => set({ content: v })}
+              rows={18}
             />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Content * (Markdown supported)
-            </label>
-            <textarea
-              value={formData.content}
-              onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-              required
-              rows={20}
-              className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary font-mono text-sm"
-              placeholder="Write your post content in Markdown..."
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
-                Author *
-              </label>
-              <input
-                type="text"
-                value={formData.author}
-                onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                required
-                className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                placeholder="Author name"
+          </Field>
+          <div className="admin-grid-2">
+            <Field label="Author">
+              <TextInput
+                value={form.author}
+                onChange={(v) => set({ author: v })}
               />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
-                Read Time *
-              </label>
-              <input
-                type="text"
-                value={formData.readTime}
-                onChange={(e) => setFormData({ ...formData, readTime: e.target.value })}
-                required
-                className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                placeholder="5"
+            </Field>
+            <Field label="Read time" help="e.g. 5">
+              <TextInput
+                value={form.readTime}
+                onChange={(v) => set({ readTime: v })}
               />
-            </div>
+            </Field>
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Tags * (comma-separated)
-            </label>
-            <input
-              type="text"
-              value={formData.tags}
-              onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-              required
-              className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          <Field label="Tags" help="Comma-separated.">
+            <TextInput
+              value={form.tags}
+              onChange={(v) => set({ tags: v })}
               placeholder="React, Next.js, TypeScript"
             />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Cover Image URL (optional)
-            </label>
-            <input
-              type="text"
-              value={formData.coverImage}
-              onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })}
-              className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              placeholder="https://example.com/image.jpg"
+          </Field>
+          <Field label="Cover image URL" help="Optional.">
+            <TextInput
+              value={form.coverImage}
+              onChange={(v) => set({ coverImage: v })}
             />
-          </div>
-        </form>
-        )}
-      </main>
-    </div>
+          </Field>
+        </>
+      )}
+
+      <div className="admin-actions">
+        <Button variant="primary" onClick={submit}>
+          {isNew ? "Create post" : "Save post"}
+        </Button>
+        <Button onClick={onCancel}>Cancel</Button>
+        <SaveStatus state={state} />
+      </div>
+    </Card>
   );
 }

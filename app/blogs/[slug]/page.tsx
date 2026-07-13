@@ -77,15 +77,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         />
       </Suspense>
 
-      <h2 id="seealso">
-        See also      </h2>
-      <div className="col2">
-        <ul>
-          <li><Link href="/blogs">Writings by Jiru Gutema</Link></li>
-          <li><Link href="/projects">List of works by Jiru Gutema</Link></li>
-          <li><Link href="/">Jiru Gutema</Link></li>
-        </ul>
-      </div>
 
       {post.tags.length > 0 && (
         <div className="catlinks">

@@ -21,15 +21,6 @@ export default function NotFound() {
         <Link href="/">main page</Link>.
       </p>
 
-      <h2 id="seealso">
-        See also      </h2>
-      <div className="col2">
-        <ul>
-          <li><Link href="/blogs">Writings by Jiru Gutema</Link></li>
-          <li><Link href="/projects">List of works by Jiru Gutema</Link></li>
-          <li><Link href="/">Jiru Gutema</Link></li>
-        </ul>
-      </div>
     </>
   );
 }

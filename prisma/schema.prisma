@@ -40,3 +40,41 @@ model BlogPost {
   dislikes    Int      @default(0)
   coverImage  String?
 }
+
+/// A portfolio project. Drives the "Selected projects" table on the
+/// biography page (when featured) and the full /projects listing.
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  note         String   @default("")
+  technologies String   @default("") // comma separated
+  details      String   @default("") // one bullet per line
+  liveDemoLink String   @default("")
+  githubLink   String   @default("")
+  featured     Boolean  @default(true) // show in the biography summary table
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+}
+
+/// An editable section of the biography article. Rendered in `order`,
+/// with `level` mapping to <h2>/<h3>. `body` holds sanitized HTML.
+model ArticleSection {
+  id        Int     @id @default(autoincrement())
+  key       String  @unique // stable anchor id, used for TOC + deep links
+  title     String
+  level     Int     @default(2) // 2 => h2, 3 => h3
+  body      String  @default("") // sanitized HTML
+  order     Int     @default(0)
+  inToc     Boolean @default(true)
+  published Boolean @default(true)
+  special   String  @default("") // "projects" => inject featured projects table
+}
+
+/// Key/value JSON store for the site "chrome" blocks that are not part of
+/// the article flow: header bar, hero/lead, infobox, sidebar, footer, tags.
+model SiteContent {
+  key       String   @id
+  data      Json
+  updatedAt DateTime @default(now()) @updatedAt
+}

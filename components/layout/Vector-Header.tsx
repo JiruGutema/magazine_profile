@@ -3,14 +3,15 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import type { HeaderContent } from "@/lib/content-types";
 
 const TABS = [
-  { href: "/", label: "Biography" },
+  { href: "/", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/blogs", label: "Writings" },
 ];
 
-export function VectorHeader() {
+export function VectorHeader({ data }: { data: HeaderContent }) {
   const pathname = usePathname();
   const [isDark, setIsDark] = useState(false);
 
@@ -29,14 +30,18 @@ export function VectorHeader() {
   };
 
   return (
-    <div className="vector-header">
+    <div className="vector-header" id="top">
       <div className="vh-row">
         <div className="vh-tabs">
           <div className="vh-personal">
-            <a href="mailto:jirudagutema@gmail.com">jirudagutema@gmail.com</a>
-            <a href="#">Addis Ababa, ET</a>
-            <a href="#">UTC+3</a>
-            <span style={{ padding: "0 8px", color: "#6a8f3d" }}>● Available for work</span>
+            <a href={`mailto:${data.email}`}>{data.email}</a>
+            <a href="#">{data.location}</a>
+            <a href="#">{data.timezone}</a>
+            {data.availability && (
+              <span style={{ padding: "0 8px", color: "#6a8f3d" }}>
+                ● {data.availability}
+              </span>
+            )}
             <button
               className="theme-toggle"
               onClick={toggle}
