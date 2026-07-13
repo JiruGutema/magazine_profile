@@ -306,6 +306,8 @@ a.external::after {
 .editsection::after  { content: " ]"; color: var(--ink-2); }
 
 .vector-body ul, .vector-body ol { margin: 0.4em 0 0.4em 1.6em; padding: 0; }
+.vector-body ul { list-style: disc outside; }
+.vector-body ol { list-style: decimal outside; }
 .vector-body li { margin: 0.15em 0; }
 .vector-body i, .vector-body em { font-style: italic; }
 .vector-body b, .vector-body strong { font-weight: bold; }
@@ -450,6 +452,42 @@ sup.reference::after  { content: "]"; }
   margin-bottom: 2px;
   font-size: 13px;
 }
+
+/* ── Sortable wikitable (list pages) ─────────────────────────── */
+.wikitable th.sortable { padding: 0; }
+.wikitable .sort-btn {
+  appearance: none;
+  background: none;
+  border: none;
+  display: block;
+  width: 100%;
+  padding: 4px 8px;
+  font: inherit;
+  font-weight: bold;
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+.wikitable .sort-ind {
+  font-size: 9px;
+  color: var(--ink-3);
+  margin-left: 2px;
+}
+.wikitable th[aria-sort] .sort-ind { color: var(--ink); }
+
+.table-scroll { overflow-x: auto; }
+
+/* Prose metadata line under each work entry on the list page */
+.work-meta { font-size: 12.5px; }
+
+/* Horizontal rule separating consecutive work entries */
+.work-entry + .work-entry {
+  border-top: 1px solid var(--rule-soft);
+  margin-top: 18px;
+  padding-top: 2px;
+}
+
+.vector-body section[id] { scroll-margin-top: 8px; }
 
 /* ── Quote box ───────────────────────────────────────────────── */
 .quotebox {
@@ -1025,4 +1063,5 @@ sup.reference::after  { content: "]"; }
 @media (max-width: 720px) {
   .admin-grid-2 { grid-template-columns: 1fr; }
   .admin-item { flex-wrap: wrap; }
+  .table-scroll .wikitable { min-width: 640px; }
 }
