@@ -40,14 +40,8 @@ export default async function PortfolioPage() {
   return (
     <>
       <div className="firstHeading-wrap">
-        <h1 className="firstHeading">
-          <i>{hero.name}</i>
-        </h1>
-        {hero.goodArticle && (
-          <span className="ga-star" title="This is a good article.">
-            ★
-          </span>
-        )}
+        <h1 className="firstHeading">{hero.name}</h1>
+        {hero.goodArticle}
       </div>
       <div className="siteSub">{hero.tagline}</div>
       <div className="contentSub" />
