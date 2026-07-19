@@ -55,4 +55,13 @@ export const selectedProjectsData: ProjectData[] = [
     showUserCount: true,
     userCountKey: "pagemarkeruser",
   },
+  {
+    title: "Content Section Blocker (Browser Extension)",
+    description:
+      "A cross-browser extension that force-hides any element on any website by CSS selector. Includes a point-and-click element picker, plus per-site or global rules that persist locally.",
+    links: [
+      { label: "Install for Firefox", href: "https://addons.mozilla.org/en-US/firefox/addon/element-selector-blocker" },
+      { label: "Github", href: "https://github.com/JiruGutema/element-blocker-browser-extension" },
+    ],
+  },
 ];

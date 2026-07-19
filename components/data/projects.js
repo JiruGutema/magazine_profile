@@ -86,6 +86,32 @@ export const projects = [
       "https://addons.mozilla.org/en-US/firefox/addon/hide-youtube-short/",
     githubLink: "https://github.com/JiruGutema/Hide-Youtube-Shorts",
   },
+  {
+    id: 14,
+    title: "Content Section Blocker (Browser Extension)",
+    description:
+      "A cross-browser extension that force-hides any element on any website by CSS selector (class or id). Rules are editable and stored locally — per-site by default, or globally across all sites.",
+    note: "",
+    technologies: [
+      "JavaScript",
+      "WebExtensions API",
+      "Manifest V3",
+      "HTML",
+      "CSS",
+    ],
+    details: [
+      "Block any element by pasting a CSS selector like `.ad-container` or `#promoted-post`; the matching element is force-hidden with `display: none !important`.",
+      "Includes a point-and-click element picker that generates a selector (preferring the element's id) and blocks it instantly.",
+      "Supports per-site rules that fire only on the domain they were added on, plus global rules that apply everywhere.",
+      "Rules are fully editable — toggle on/off, edit the selector, or delete — and persist in storage.local, with a master switch to pause or resume all blocking.",
+      "Injects rules as a stylesheet at document_start, so blocked elements never flash and dynamically-added elements stay hidden without per-node scanning.",
+      "Shares a single Manifest V3 codebase across Chrome/Edge and Firefox using the WebExtensions API.",
+    ],
+    liveDemoLink:
+      "https://addons.mozilla.org/en-US/firefox/addon/element-selector-blocker",
+    githubLink:
+      "https://github.com/JiruGutema/element-blocker-browser-extension",
+  },
 
   {
     id: 2,
