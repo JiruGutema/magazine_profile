@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Toc, type TocItem } from "@/components/profile/Toc";
 import { WorksTable, type WorkRow } from "@/components/portfolio/Works-Table";
@@ -27,6 +28,24 @@ function EditSection() {
   );
 }
 
+/** Wiki-style floated screenshot; rendered only when the project has one. */
+function WorkThumb({ src, caption }: { src: string; caption: string }) {
+  return (
+    <figure className="thumb work-thumb">
+      <div className="thumb-img">
+        <Image
+          src={src}
+          alt={caption}
+          width={220}
+          height={140}
+          className="thumb-photo"
+        />
+      </div>
+      <figcaption className="caption">{caption}</figcaption>
+    </figure>
+  );
+}
+
 function WorkDetail({ entry }: { entry: WorkEntry }) {
   const p = entry.project;
   const hasMeta = p.technologies.length > 0 || p.liveDemoLink || p.githubLink;
@@ -35,6 +54,9 @@ function WorkDetail({ entry }: { entry: WorkEntry }) {
       <h3>
         <i>{p.title}</i>
       </h3>
+      {p.imageUrl && (
+        <WorkThumb src={p.imageUrl} caption={p.imageCaption || p.title} />
+      )}
       {p.note && (
         <p className="hatnote">
           <i>Note:</i> {p.note}

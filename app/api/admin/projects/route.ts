@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { getAdminUser } from "@/lib/auth";
+import { IMAGE_URL_ERROR, parseImageUrl } from "@/lib/project-image";
 
 export async function GET() {
   const user = await getAdminUser();
@@ -27,6 +28,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Title is required" }, { status: 400 });
     }
 
+    const imageUrl = parseImageUrl(data.imageUrl);
+    if (imageUrl === null) {
+      return NextResponse.json({ error: IMAGE_URL_ERROR }, { status: 400 });
+    }
+
     const last = await prisma.project.findFirst({ orderBy: { order: "desc" } });
 
     const project = await prisma.project.create({
@@ -38,6 +44,8 @@ export async function POST(request: NextRequest) {
         details: data.details ?? "",
         liveDemoLink: data.liveDemoLink ?? "",
         githubLink: data.githubLink ?? "",
+        imageUrl,
+        imageCaption: data.imageCaption ?? "",
         featured: data.featured ?? true,
         order:
           typeof data.order === "number" ? data.order : (last?.order ?? 0) + 10,

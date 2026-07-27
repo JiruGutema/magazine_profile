@@ -25,7 +25,11 @@ const ALLOWED_ATTR = new Set([
 const URL_ATTR = new Set(["href", "src"]);
 const VOID_TAGS = new Set(["br", "hr", "img"]);
 
-function isSafeUrl(url: string): boolean {
+/**
+ * True for URLs safe to put in an `href`/`src`: anchors, relative paths and
+ * the http/mailto/tel schemes. Rejects `javascript:`, `data:`, `vbscript:`.
+ */
+export function isSafeUrl(url: string): boolean {
   const v = url.trim();
   if (v === "") return false;
   if (/^(#|\/|\.{1,2}\/)/.test(v)) return true; // anchors + relative paths

@@ -21,6 +21,8 @@ interface AdminProject {
   details: string;
   liveDemoLink: string;
   githubLink: string;
+  imageUrl: string;
+  imageCaption: string;
   featured: boolean;
   order: number;
 }
@@ -34,6 +36,8 @@ const BLANK: AdminProject = {
   details: "",
   liveDemoLink: "",
   githubLink: "",
+  imageUrl: "",
+  imageCaption: "",
   featured: true,
   order: 0,
 };
@@ -129,6 +133,38 @@ export function ProjectsPanel() {
   );
 }
 
+/**
+ * Editor-only preview. Uses a bare <img> rather than next/image because the
+ * URL is typed live and may be broken while the field is mid-edit.
+ */
+function ImagePreview({ src, alt }: { src: string; alt: string }) {
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => setFailed(false), [src]);
+
+  if (failed) {
+    return <p className="admin-help">Image could not be loaded from this URL.</p>;
+  }
+
+  return (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      src={src}
+      alt={alt || "Project screenshot preview"}
+      onError={() => setFailed(true)}
+      style={{
+        display: "block",
+        maxWidth: 320,
+        maxHeight: 200,
+        objectFit: "contain",
+        border: "1px solid var(--rule-soft)",
+        background: "var(--box-bg)",
+        padding: 3,
+      }}
+    />
+  );
+}
+
 function ProjectEditor({
   project,
   onSaved,
@@ -138,7 +174,7 @@ function ProjectEditor({
   onSaved: () => void;
   onCancel: () => void;
 }) {
-  const [form, setForm] = useState<AdminProject>(project ?? BLANK);
+  const [form, setForm] = useState<AdminProject>({ ...BLANK, ...project });
   const [state, setState] = useState<SaveState>({ kind: "idle" });
   const isNew = !project;
   const set = (patch: Partial<AdminProject>) =>
@@ -224,6 +260,30 @@ function ProjectEditor({
           />
         </Field>
       </div>
+      <div className="admin-grid-2">
+        <Field
+          label="Image URL"
+          help="Optional screenshot shown on /projects. Use /file.png for images in /public."
+        >
+          <TextInput
+            value={form.imageUrl}
+            onChange={(v) => set({ imageUrl: v })}
+            placeholder="https://… or /screenshots/project.png"
+          />
+        </Field>
+        <Field label="Image caption" help="Defaults to the project title.">
+          <TextInput
+            value={form.imageCaption}
+            onChange={(v) => set({ imageCaption: v })}
+            disabled={!form.imageUrl.trim()}
+          />
+        </Field>
+      </div>
+      {form.imageUrl.trim() && (
+        <Field label="Preview">
+          <ImagePreview src={form.imageUrl.trim()} alt={form.title} />
+        </Field>
+      )}
       <div className="admin-grid-2">
         <Field label="Order" help="Lower numbers appear first.">
           <TextInput

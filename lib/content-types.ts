@@ -87,6 +87,10 @@ export interface ProjectInput {
   details: string;
   liveDemoLink: string;
   githubLink: string;
+  /** Optional screenshot URL; empty string means "no image". */
+  imageUrl: string;
+  /** Caption under the screenshot; falls back to the title when empty. */
+  imageCaption: string;
   featured: boolean;
   order: number;
 }

@@ -9,6 +9,7 @@ import {
   DEFAULT_TAGS,
 } from "@/lib/content-defaults";
 import type { SiteContentKey, SiteContentMap } from "@/lib/content-types";
+import { sanitizeImageUrl } from "@/lib/project-image";
 
 /**
  * Server-side content getters. Each falls back to the defaults in
@@ -91,6 +92,8 @@ export interface ProjectView {
   details: string[];
   liveDemoLink: string;
   githubLink: string;
+  imageUrl: string;
+  imageCaption: string;
   featured: boolean;
   order: number;
 }
@@ -119,6 +122,8 @@ export async function getProjects(options?: {
             details: splitList(r.details, "\n"),
             liveDemoLink: r.liveDemoLink,
             githubLink: r.githubLink,
+            imageUrl: sanitizeImageUrl(r.imageUrl),
+            imageCaption: r.imageCaption,
             featured: r.featured,
             order: r.order,
           }))
@@ -141,6 +146,8 @@ function defaultProjectViews(): ProjectView[] {
     details: splitList(p.details, "\n"),
     liveDemoLink: p.liveDemoLink,
     githubLink: p.githubLink,
+    imageUrl: sanitizeImageUrl(p.imageUrl),
+    imageCaption: p.imageCaption,
     featured: p.featured,
     order: p.order,
   }));

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { getAdminUser } from "@/lib/auth";
+import { IMAGE_URL_ERROR, parseImageUrl } from "@/lib/project-image";
 
 export async function GET(
   _request: NextRequest,
@@ -38,6 +39,11 @@ export async function PUT(
       return NextResponse.json({ error: "Title is required" }, { status: 400 });
     }
 
+    const imageUrl = parseImageUrl(data.imageUrl);
+    if (imageUrl === null) {
+      return NextResponse.json({ error: IMAGE_URL_ERROR }, { status: 400 });
+    }
+
     const project = await prisma.project.update({
       where: { id: parseInt(id) },
       data: {
@@ -48,6 +54,8 @@ export async function PUT(
         details: data.details ?? "",
         liveDemoLink: data.liveDemoLink ?? "",
         githubLink: data.githubLink ?? "",
+        imageUrl,
+        imageCaption: data.imageCaption ?? "",
         featured: data.featured ?? true,
         order: typeof data.order === "number" ? data.order : 0,
       },

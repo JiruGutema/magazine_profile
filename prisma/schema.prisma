@@ -52,6 +52,8 @@ model Project {
   details      String   @default("") // one bullet per line
   liveDemoLink String   @default("")
   githubLink   String   @default("")
+  imageUrl     String   @default("") // optional screenshot shown on /projects
+  imageCaption String   @default("") // falls back to the title when empty
   featured     Boolean  @default(true) // show in the biography summary table
   order        Int      @default(0)
   createdAt    DateTime @default(now())

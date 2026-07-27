@@ -305,6 +305,8 @@ interface LegacyProject {
   details?: string[];
   liveDemoLink?: string;
   githubLink?: string;
+  imageUrl?: string;
+  imageCaption?: string;
 }
 
 /** The first six projects are shown in the biography summary table. */
@@ -320,6 +322,8 @@ export const DEFAULT_PROJECTS: ProjectInput[] = (
   details: (p.details ?? []).join("\n"),
   liveDemoLink: p.liveDemoLink ?? "",
   githubLink: p.githubLink ?? "",
+  imageUrl: p.imageUrl ?? "",
+  imageCaption: p.imageCaption ?? "",
   featured: i < FEATURED_COUNT,
   order: (i + 1) * 10,
 }));

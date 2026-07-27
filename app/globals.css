@@ -578,6 +578,9 @@ sup.reference::after  { content: "]"; }
   color: var(--ink-3); font-family: var(--serif); font-size: 12px;
 }
 .thumb .caption { padding: 4px 4px 2px; line-height: 1.35; }
+/* Screenshot inside the hatched frame — contained so any aspect ratio fits. */
+.thumb .thumb-photo { width: 100%; height: 100%; object-fit: contain; }
+.work-thumb { margin-top: 0; }
 
 /* ── Contribution graph ──────────────────────────────────────── */
 .ct-grid {
@@ -772,6 +775,7 @@ sup.reference::after  { content: "]"; }
   .vh-logo .puzzle { width: 64px; height: 64px; }
   .vh-logo .wm-name { font-size: 13px; }
   .infobox { float: none; width: 100%; margin: 8px 0; }
+  .work-thumb { float: none; width: max-content; margin: 8px 0; }
   .quotebox { float: none; width: 100%; margin: 8px 0; }
   .references { column-count: 1; }
   .col2 { column-count: 1; }
