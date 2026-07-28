@@ -15,6 +15,8 @@ export function Header() {
     if (savedTheme === "dark") {
       document.documentElement.classList.add("dark");
       setIsDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 

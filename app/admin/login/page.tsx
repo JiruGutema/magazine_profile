@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ export default function AdminLoginPage() {
   // The public site remembers a dark-mode choice; honour it here too so the
   // login screen matches the rest of the encyclopedia.
   useEffect(() => {
-    const saved = localStorage.getItem("jg-theme");
+    const saved = localStorage.getItem("theme");
     const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (saved === "dark" || (saved == null && prefers)) {
       document.documentElement.classList.add("dark");
@@ -72,7 +73,8 @@ export default function AdminLoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="admin@example.com"
+              placeholder="jirugutema@gmail.com"
+              enterKeyHint="next"
             />
           </div>
 
@@ -87,7 +89,8 @@ export default function AdminLoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder="••••••••"
+                placeholder="************"
+                enterKeyHint="next"
               />
               <button
                 type="button"
@@ -122,6 +125,11 @@ export default function AdminLoginPage() {
           >
             {isLoading ? "Logging in…" : "Log in"}
           </button>
+          <div className="text-center">
+            <p className="align-middle pt-2">
+              <Link href="/" className="underline">Visit Page</Link>
+            </p>
+          </div>
         </form>
       </div>
     </div>

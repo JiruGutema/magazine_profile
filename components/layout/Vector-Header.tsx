@@ -16,8 +16,8 @@ export function VectorHeader({ data }: { data: HeaderContent }) {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("jg-theme");
-    const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const saved = localStorage.getItem("theme");
+    const prefers = window.matchMedia("(prefers-color-scheme: light)").matches;
     const dark = saved === "dark" || (saved == null && prefers);
     if (dark) document.documentElement.classList.add("dark");
     setIsDark(dark);
@@ -25,7 +25,7 @@ export function VectorHeader({ data }: { data: HeaderContent }) {
 
   const toggle = () => {
     const dark = document.documentElement.classList.toggle("dark");
-    localStorage.setItem("jg-theme", dark ? "dark" : "light");
+    localStorage.setItem("theme", dark ? "dark" : "light");
     setIsDark(dark);
   };
 
@@ -36,7 +36,7 @@ export function VectorHeader({ data }: { data: HeaderContent }) {
           <div className="vh-personal">
             <a href={`mailto:${data.email}`}>{data.email}</a>
             <a href="#">{data.location}</a>
-            <a href="#">{data.timezone}</a>
+            <a href="#">UTC+3</a> {/* I am living in Ethiopia*/}
             {data.availability && (
               <span style={{ padding: "0 8px", color: "#6a8f3d" }}>
                 ● {data.availability}
@@ -47,14 +47,32 @@ export function VectorHeader({ data }: { data: HeaderContent }) {
               onClick={toggle}
               title="Toggle dark mode"
               aria-label="Toggle dark mode"
+              style={{"border":"none", "borderRadius":"50%", "padding":"none"}}
             >
               {isDark ? (
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
-                  <circle cx="12" cy="12" r="4" />
-                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                <svg
+                  viewBox="0 0 24 24"
+                  width="14"
+                  height="14"
+                  fill="white"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                >
+                  <circle cx="12" cy="12" r="4" color="red" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" color="white" />
                 </svg>
               ) : (
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="14"
+                  height="14"
+                  fill="black"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
                 </svg>
               )}
@@ -62,7 +80,8 @@ export function VectorHeader({ data }: { data: HeaderContent }) {
           </div>
           <div className="vh-tabrow">
             {TABS.map((t, i) => {
-              const active = t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
+              const active =
+                t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
               return (
                 <Link
                   key={t.href}

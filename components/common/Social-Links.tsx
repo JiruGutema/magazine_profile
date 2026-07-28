@@ -1,17 +1,5 @@
 "use client";
 
-import {
-  Send,
-  Linkedin,
-  Instagram,
-  Twitter,
-  Github,
-  Code,
-  Mail,
-  Code2Icon,
-  X,
-} from "lucide-react";
-
 export default function SocialLinks() {
   return (
     <div className="flex gap-x-2 mt-4">

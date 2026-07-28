@@ -68,7 +68,6 @@ export default async function PortfolioPage() {
           )}
         </section>
       ))}
-
       {tags.items.length > 0 && (
         <div className="catlinks">
           <b>Tags</b>:{" "}

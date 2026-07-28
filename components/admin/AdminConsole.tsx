@@ -33,7 +33,7 @@ export default function AdminConsole({ user }: { user: User }) {
 
   // Honour the site's saved dark-mode choice so the console matches the site.
   useEffect(() => {
-    const saved = localStorage.getItem("jg-theme");
+    const saved = localStorage.getItem("theme");
     const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (saved === "dark" || (saved == null && prefers)) {
       document.documentElement.classList.add("dark");
@@ -53,7 +53,9 @@ export default function AdminConsole({ user }: { user: User }) {
       <div className="admin-topbar">
         <div className="admin-topbar-row">
           <div className="admin-brand">
-            Jiru Gutema
+            <a rel="stylesheet" href="/">
+              Jiru Gutema
+            </a>
             <small>Content administration</small>
           </div>
           <div className="admin-inline">
