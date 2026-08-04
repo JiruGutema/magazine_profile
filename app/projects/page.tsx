@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Toc, type TocItem } from "@/components/profile/Toc";
@@ -15,6 +16,35 @@ import {
 } from "@/lib/works";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "List of works by Jiru Gutema | Software Engineering Portfolio",
+  description:
+    "A catalog of software works, open-source web applications, browser extensions, and developer tools authored and co-authored by Jiru Gutema.",
+  keywords: [
+    "Jiru Gutema Projects",
+    "Software Engineer Portfolio",
+    "Web Applications",
+    "Browser Extensions",
+    "Open Source",
+    "Next.js",
+    "FastAPI",
+    "Go",
+  ],
+  openGraph: {
+    title: "List of works by Jiru Gutema",
+    description:
+      "A catalog of software works, open-source web applications, browser extensions, and developer tools authored and co-authored by Jiru Gutema.",
+    url: "https://jiru.is-a.dev/projects",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "List of works by Jiru Gutema",
+    description:
+      "A catalog of software works, open-source web applications, browser extensions, and developer tools authored and co-authored by Jiru Gutema.",
+  },
+};
 
 const GITHUB_PROFILE = "https://github.com/JiruGutema";
 
@@ -153,9 +183,9 @@ export default async function ProjectsPage() {
 
       <p>
         This is a list of{" "}
-        <a href="https://en.wikipedia.org/wiki/Software">software</a> works
-        authored or co-authored by Ethiopian software engineer{" "}
-        <Link href="/">Jiru Gutema</Link>. As of {year}, the list comprises{" "}
+        <a href="https://en.wikipedia.org/wiki/Software">software</a> works I
+        have authored or co-authored as an Ethiopian software engineer. As of{" "}
+        {year}, the list comprises{" "}
         {numberWord(entries.length)} works — {describeGroupCounts(groups)} —
         {techs.length > 0 && <> built with technologies including {joinProse(techs)},</>}{" "}
         spanning personal projects, open-source contributions and group work

@@ -4,9 +4,9 @@ import prisma from "@/lib/prisma";
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { slug: string } },
+  props: { params: Promise<{ slug: string }> },
 ) {
-  const { slug } = await params;
+  const { slug } = await props.params;
   if (!slug) {
     return Response.json({ error: "blog slug is required!" }, { status: 400 });
   }

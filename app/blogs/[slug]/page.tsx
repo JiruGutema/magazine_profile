@@ -128,6 +128,10 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     description: post.excerpt,
     keywords: post.tags.join(", "),
     authors: [{ name: post.author }],
+    robots: {
+      index: false,
+      follow: true,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,

@@ -5,6 +5,7 @@ import { WikiShell } from "@/components/layout/Wiki-Shell";
 import { getContent } from "@/lib/content";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jiru.is-a.dev"),
   title: "Jiru Gutema | Software Engineer & Fullstack Developer Portfolio",
   icons: { icon: "/icon.png" },
   description:
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     title: "Jiru Gutema",
     description:
       "The official online portfolio of Jiru Gutema, a software engineer and fullstack developer student showcasing projects, skills, and experience.",
-    url: "https://jirugutema.vercel.app",
+    url: "https://jiru.is-a.dev",
     siteName: "Jiru Gutema's Portfolio",
     images: [
       {

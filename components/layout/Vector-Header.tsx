@@ -47,27 +47,27 @@ export function VectorHeader({ data }: { data: HeaderContent }) {
               onClick={toggle}
               title="Toggle dark mode"
               aria-label="Toggle dark mode"
-              style={{"border":"none", "borderRadius":"50%", "padding":"none"}}
+              style={{ border: "none", borderRadius: "50%", padding: 0 }}
             >
               {isDark ? (
                 <svg
                   viewBox="0 0 24 24"
                   width="14"
                   height="14"
-                  fill="white"
+                  fill="none"
                   stroke="currentColor"
                   strokeWidth="1.7"
                   strokeLinecap="round"
                 >
-                  <circle cx="12" cy="12" r="4" color="red" />
-                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" color="white" />
+                  <circle cx="12" cy="12" r="4" fill="currentColor" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
                 </svg>
               ) : (
                 <svg
                   viewBox="0 0 24 24"
                   width="14"
                   height="14"
-                  fill="black"
+                  fill="currentColor"
                   stroke="currentColor"
                   strokeWidth="1.7"
                   strokeLinecap="round"

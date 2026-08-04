@@ -34,49 +34,81 @@ export default function BlogReactions({
 
     setIsLoading(true);
 
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 300));
+    const prevLikes = likes;
+    const prevDislikes = dislikes;
+    const prevReaction = userReaction;
 
-      let newLikes = likes;
-      let newDislikes = dislikes;
-      let newUserReaction: "like" | "dislike" | null = null;
+    let action: "like" | "dislike" | "unlike" | "undislike" | "switch_to_like" | "switch_to_dislike";
+    let newLikes = likes;
+    let newDislikes = dislikes;
+    let newUserReaction: "like" | "dislike" | null = null;
 
-      if (userReaction === type) {
-        if (type === "like") {
-          newLikes = likes - 1;
-        } else {
-          newDislikes = dislikes - 1;
-        }
-        newUserReaction = null;
+    if (userReaction === type) {
+      if (type === "like") {
+        action = "unlike";
+        newLikes = Math.max(0, likes - 1);
       } else {
-        if (userReaction === "like") {
-          newLikes = likes - 1;
-        } else if (userReaction === "dislike") {
-          newDislikes = dislikes - 1;
-        }
-
+        action = "undislike";
+        newDislikes = Math.max(0, dislikes - 1);
+      }
+      newUserReaction = null;
+    } else {
+      if (userReaction === "like") {
+        action = "switch_to_dislike";
+        newLikes = Math.max(0, likes - 1);
+        newDislikes = dislikes + 1;
+      } else if (userReaction === "dislike") {
+        action = "switch_to_like";
+        newDislikes = Math.max(0, dislikes - 1);
+        newLikes = likes + 1;
+      } else {
         if (type === "like") {
-          newLikes = newLikes + 1;
+          action = "like";
+          newLikes = likes + 1;
         } else {
-          newDislikes = newDislikes + 1;
+          action = "dislike";
+          newDislikes = dislikes + 1;
         }
-        newUserReaction = type;
+      }
+      newUserReaction = type;
+    }
+
+    // Optimistic update
+    setLikes(newLikes);
+    setDislikes(newDislikes);
+    setUserReaction(newUserReaction);
+
+    if (newUserReaction) {
+      localStorage.setItem(`blog-reaction-${postId}`, newUserReaction);
+    } else {
+      localStorage.removeItem(`blog-reaction-${postId}`);
+    }
+
+    try {
+      const res = await fetch("/api/blogs/reaction", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ postId, action }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Failed reaction request: ${res.status}`);
       }
 
-      setLikes(newLikes);
-      setDislikes(newDislikes);
-      setUserReaction(newUserReaction);
-
-      if (newUserReaction) {
-        localStorage.setItem(`blog-reaction-${postId}`, newUserReaction);
+      const data = await res.json();
+      if (typeof data.likes === "number") setLikes(data.likes);
+      if (typeof data.dislikes === "number") setDislikes(data.dislikes);
+    } catch (error) {
+      console.error("Failed to persist reaction:", error);
+      // Rollback on error
+      setLikes(prevLikes);
+      setDislikes(prevDislikes);
+      setUserReaction(prevReaction);
+      if (prevReaction) {
+        localStorage.setItem(`blog-reaction-${postId}`, prevReaction);
       } else {
         localStorage.removeItem(`blog-reaction-${postId}`);
       }
-    } catch (error) {
-      console.error("Failed to update reaction:", error);
-      setLikes(likes);
-      setDislikes(dislikes);
-      setUserReaction(userReaction);
     } finally {
       setIsLoading(false);
     }

@@ -1,18 +1,59 @@
+import type { Metadata } from "next";
 import { BlogPost } from "@/lib/types";
-import { baseUrl } from "@/lib/utils";
-import "dotenv/config";
+import prisma from "@/lib/prisma";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Writings by Jiru Gutema | Essays, Tutorials and Notes",
+  description:
+    "A chronological list of writings, essays, tutorials, and technical notes authored by Jiru Gutema covering software development, web technologies, and systems engineering.",
+  keywords: [
+    "Jiru Gutema",
+    "Blog",
+    "Software Engineering Articles",
+    "Web Development",
+    "Tutorials",
+    "Next.js",
+    "FastAPI",
+  ],
+  openGraph: {
+    title: "Writings by Jiru Gutema",
+    description:
+      "A chronological list of writings, essays, tutorials, and technical notes authored by Jiru Gutema covering software development, web technologies, and systems engineering.",
+    url: "https://jiru.is-a.dev/blogs",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Writings by Jiru Gutema",
+    description:
+      "A chronological list of writings, essays, tutorials, and technical notes authored by Jiru Gutema covering software development, web technologies, and systems engineering.",
+  },
+};
 
 export default async function BlogPage() {
   let posts: BlogPost[] = [];
 
   try {
-    const res = await fetch(`${baseUrl}/api/blogs`, { cache: "no-store" });
-    if (!res.ok) throw new Error(`Failed to fetch blogs: ${res.status}`);
-    const data = await res.json();
-    posts = data.data || [];
+    const res = await prisma.blogPost.findMany({
+      orderBy: { publishedAt: "desc" },
+    });
+    posts = res.map((p) => ({
+      id: p.id,
+      title: p.title,
+      excerpt: p.excerpt,
+      content: p.content,
+      author: p.author,
+      publishedAt: p.publishedAt,
+      readTime: p.readTime,
+      tags: p.tags ? p.tags.split(",").map((t) => t.trim()).filter(Boolean) : [],
+      likes: p.likes,
+      dislikes: p.dislikes,
+      slug: p.slug,
+      coverImage: p.coverImage || undefined,
+    }));
   } catch (error) {
-    console.error("Error fetching blog posts:", error);
+    console.error("Error fetching blog posts from database:", error);
     posts = [];
   }
 
@@ -30,10 +71,10 @@ export default async function BlogPage() {
       </p>
 
       <p>
-        This is a chronological list of writings authored by{" "}
-        <Link href="/">Jiru Gutema</Link>, covering software development, web
-        technologies and programming best practices. The list is ordered by
-        publication date, with the most recent entries first.
+        This is a chronological list of writings I have authored, covering
+        software development, web technologies and programming best practices.
+        The list is ordered by publication date, with the most recent entries
+        first.
       </p>
 
       {posts.length === 0 ? (
