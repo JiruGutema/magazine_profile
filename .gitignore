@@ -18,6 +18,8 @@ yarn-error.log*
 
 # env files
 .env*
+# ...except the checked-in template, which holds no real values
+!.env.example
 
 # vercel
 .vercel
@@ -25,8 +27,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-/lib/generated/prisma
-
-/lib/generated/prisma
-
 /lib/generated/prisma
