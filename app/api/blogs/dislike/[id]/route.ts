@@ -1,8 +1,9 @@
-import prisma from "@/lib/prisma";
 import { NextResponse, NextRequest } from "next/server";
+import { POST as reactionPost } from "../../reaction/route";
 
+// Legacy route: route through secured reaction handler
 export async function PATCH(
-  _req: NextRequest,
+  req: NextRequest,
   props: { params: Promise<{ id: string }> },
 ) {
   const { id } = await props.params;
@@ -11,20 +12,12 @@ export async function PATCH(
     return NextResponse.json({ error: "Invalid blog id" }, { status: 400 });
   }
 
-  const exist = await prisma.blogPost.findUnique({
-    where: { id: blogId },
-  });
-  if (!exist) {
-    return NextResponse.json(
-      { error: "Blog post not found" },
-      { status: 404 },
-    );
-  }
-
-  const post = await prisma.blogPost.update({
-    where: { id: blogId },
-    data: { dislikes: { increment: 1 } },
+  // Forward as POST to secured reaction handler
+  const forwardReq = new NextRequest(req.url, {
+    method: "POST",
+    headers: req.headers,
+    body: JSON.stringify({ postId: blogId, action: "dislike" }),
   });
 
-  return NextResponse.json(post);
+  return reactionPost(forwardReq);
 }

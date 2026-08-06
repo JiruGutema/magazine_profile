@@ -27,18 +27,40 @@ model User {
 }
 
 model BlogPost {
-  id          Int      @id @default(autoincrement())
+  id          Int                 @id @default(autoincrement())
   title       String
-  slug        String   @unique
+  slug        String              @unique
   excerpt     String
   content     String
   author      String // name of the author
-  publishedAt DateTime @default(now())
+  publishedAt DateTime            @default(now())
   readTime    String
   tags        String // comma separated
-  likes       Int      @default(0)
-  dislikes    Int      @default(0)
+  likes       Int                 @default(0)
+  dislikes    Int                 @default(0)
   coverImage  String?
+  reactions   BlogPostReaction[]
+}
+
+model BlogPostReaction {
+  id          Int      @id @default(autoincrement())
+  postId      Int
+  userId      String   // Persistent visitor UUID
+  userKey     String   // hash(postId, userId)
+  deviceKey   String   // hash(postId, ip, fingerprint)
+  fingerprint String?
+  ipAddress   String?
+  userAgent   String?
+  reaction    String   // "like" | "dislike"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  post        BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId])
+  @@index([postId, deviceKey])
+  @@index([postId, ipAddress])
+  @@index([ipAddress, createdAt])
 }
 
 /// A portfolio project. Drives the "Selected projects" table on the
