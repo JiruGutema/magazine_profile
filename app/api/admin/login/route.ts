@@ -6,7 +6,7 @@ import { signToken } from "@/lib/jwt";
 import { rateLimiter } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/reaction-security";
 
-const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7; // 7 days
+const SESSION_MAX_AGE_SECONDS = 60 * 60 * 6; // 6 hrs
 
 /**
  * Login throttles are per-IP and sized for a human typing a password, not for
