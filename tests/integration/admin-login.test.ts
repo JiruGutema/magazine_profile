@@ -162,7 +162,7 @@ describe("POST /api/admin/login — session cookie", () => {
     });
   });
 
-  test("issues an httpOnly, lax, seven-day admin-token", async () => {
+  test("issues an httpOnly, lax, 6 hrs admin-token", async () => {
     await POST(login({ email: ADMIN.email, password: PASSWORD }));
 
     const store = await cookieStore();
@@ -172,7 +172,7 @@ describe("POST /api/admin/login — session cookie", () => {
     expect(options).toMatchObject({
       httpOnly: true,
       sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: 60 * 60 * 6,
     });
   });
 
