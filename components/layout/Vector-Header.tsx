@@ -9,6 +9,7 @@ const TABS = [
   { href: "/", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/blogs", label: "Writings" },
+  { href: "/#external", label: "Contacts" },
 ];
 
 export function VectorHeader({ data }: { data: HeaderContent }) {
