@@ -21,7 +21,7 @@ export async function verifyTurnstileToken(token: string) {
       // Set a cookie so the server knows the user has passed the captcha
       const cookieStore = await cookies();
       cookieStore.set('turnstile_passed', 'true', { 
-        maxAge: 60 * 60 * 24, // 24 hours
+        maxAge: 60 * 60 * 1, // 1 hours
         path: '/',
       });
       return { success: true };
